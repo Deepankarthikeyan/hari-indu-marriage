@@ -1,55 +1,35 @@
 import { motion } from 'framer-motion'
 import { weddingConfig, type WeddingEvent } from '../../config/wedding'
-import { fadeUp } from '../motion'
+import { reveal, stagger } from '../motion'
 import './EventsSection.css'
 
-const motifIcon: Record<WeddingEvent['motif'], string> = {
-  muhurtham: '🪔',
-  reception: '🎉',
-  mehendi: '🌿',
-  general: '🪷',
-}
-
-function EventRow({ event, index }: { event: WeddingEvent; index: number }) {
-  const hasMaps = Boolean(event.mapsUrl?.trim())
+function EventItem({ event, index }: { event: WeddingEvent; index: number }) {
+  const maps = event.mapsUrl?.trim()
 
   return (
     <motion.article
-      className="event-row"
-      variants={fadeUp}
+      className="timeline-item"
+      variants={reveal}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-30px' }}
-      transition={{ delay: index * 0.06 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={stagger(index * 0.06)}
     >
-      <div className="event-motif" aria-hidden>{motifIcon[event.motif]}</div>
-      <div className="event-body">
-        <h3 className="tamil">{event.nameTa}</h3>
-        <p className="event-name-en">{event.nameEn}</p>
-        <ul className="event-details">
-          <li>
-            <span className="detail-key">Date</span>
-            <span>{event.date}</span>
-          </li>
-          <li>
-            <span className="detail-key">Time</span>
-            <span>
-              {event.timeStart}
-              {event.timeEnd ? ` – ${event.timeEnd}` : ''}
-            </span>
-          </li>
-          <li>
-            <span className="detail-key">Venue</span>
-            <span>{event.venueName}</span>
-          </li>
-          <li>
-            <span className="detail-key">Address</span>
-            <span>{event.address}</span>
-          </li>
-        </ul>
-        {hasMaps && (
-          <a className="event-directions" href={event.mapsUrl} target="_blank" rel="noopener noreferrer">
-            Open in Google Maps
+      <div className="timeline-marker" aria-hidden>
+        <span className="timeline-dot" />
+      </div>
+      <div className="timeline-body">
+        <time className="timeline-date" dateTime={event.date}>
+          {event.date} · {event.timeStart}
+          {event.timeEnd ? ` – ${event.timeEnd}` : ''}
+        </time>
+        <h3 className="timeline-title tamil">{event.nameTa}</h3>
+        <p className="timeline-title-en">{event.nameEn}</p>
+        <p className="timeline-venue">{event.venueName}</p>
+        <p className="timeline-address">{event.address}</p>
+        {maps && (
+          <a className="timeline-link" href={maps} target="_blank" rel="noopener noreferrer">
+            Get directions
           </a>
         )}
       </div>
@@ -62,21 +42,15 @@ export default function EventsSection() {
   if (!events.length) return null
 
   return (
-    <section className="events-section" id="events">
-      <motion.header
-        className="section-head"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        <h2 className="tamil">விழா நிகழ்ச்சிகள்</h2>
-        <p>Wedding Events</p>
+    <section className="events-editorial" id="events">
+      <motion.header variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <h2>Weekend Schedule</h2>
+        <p className="tamil">விழா நிகழ்ச்சிகள்</p>
       </motion.header>
 
-      <div className="events-list">
+      <div className="timeline">
         {events.map((event, i) => (
-          <EventRow key={event.id} event={event} index={i} />
+          <EventItem key={event.id} event={event} index={i} />
         ))}
       </div>
     </section>

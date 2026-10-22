@@ -1,52 +1,50 @@
 /**
  * Edit all wedding details here — the site reads only from this file.
- * Times use 24-hour format. `timezone` should be an IANA name (e.g. Asia/Kolkata).
  */
 
 export type WeddingPerson = {
   nameEn: string
   nameTa: string
-  /** Optional subtitle (degree, profession, etc.) */
   subtitle?: string
-  /** Path under /public, or full URL. Leave empty for decorative placeholder. */
+  /** Portrait for story section */
   photoSrc?: string
   parents?: string
+  /** Short personal story (editable) */
+  story?: string
 }
 
 export type WeddingEvent = {
   id: string
   nameEn: string
   nameTa: string
-  /** ISO date YYYY-MM-DD */
   date: string
-  /** 24h HH:mm */
   timeStart: string
   timeEnd?: string
   venueName: string
   address: string
-  /** Full Google Maps URL for directions */
   mapsUrl: string
-  motif: 'muhurtham' | 'reception' | 'mehendi' | 'general'
+  imageSrc?: string
 }
 
 export const weddingConfig = {
   intro: {
-    /** Shown on the temple doors before opening */
-    ctaEn: 'Open Wedding Invitation',
-    ctaTa: 'திருமண அழைப்பிதழைத் திறக்கவும்',
-    skipLabel: 'Skip Intro',
-    /** Session key — intro is not shown again in the same browser tab session */
+    skipLabel: 'Skip',
     sessionKey: 'hari-indu-wedding-intro-seen',
   },
 
+  hero: {
+    /** Full-bleed hero photograph — add under public/ e.g. /photos/hero.jpg */
+    imageSrc: '',
+    imageAlt: 'Wedding portrait',
+    subtitleEn: 'Together with our families',
+    subtitleTa: 'எங்கள் குடும்பத்தினர் சார்பாக',
+  },
+
   invitation: {
-    titleTa: 'திருமண அழைப்பிதழ்',
-    blessingEn: 'With the blessings of our elders and the grace of the divine',
-    blessingTa: 'மூத்தோர் ஆசியும் இறைவன் அருளும்',
-    inviteEn: 'Together with our families, we joyfully invite you to celebrate the wedding of',
-    inviteTa: 'எங்கள் குடும்பத்தினர் சார்பாக, திருமண விழாவிற்கு அன்புடன் அழைக்கிறோம்',
-    closingEn: 'Your presence and blessings will make our special day even more meaningful.',
-    closingTa: 'உங்கள் வருகையும் ஆசியும் எங்கள் மகிழ்ச்சியை பன்மடங்கு செய்யும்.',
+    lineEn: 'We joyfully invite you to celebrate our wedding',
+    lineTa: 'எங்கள் திருமண விழாவில் கலந்து கொண்டு ஆசிர்வதிக்க வேண்டுகிறோம்',
+    closingEn: 'Your presence and blessings will mean the world to us.',
+    closingTa: 'உங்கள் வருகையும் ஆசியும் எங்களுக்குப் பெரும் மகிழ்ச்சி.',
   },
 
   couple: {
@@ -56,6 +54,8 @@ export const weddingConfig = {
       subtitle: 'D.E.C.E.,',
       photoSrc: '',
       parents: '[Bride’s parents — edit in config]',
+      story:
+        'Rooted in tradition and guided by grace, she brings warmth, joy, and quiet strength to every chapter of this celebration.',
     } satisfies WeddingPerson,
     groom: {
       nameEn: 'V. Hariharan',
@@ -63,10 +63,11 @@ export const weddingConfig = {
       subtitle: 'B.E., (EEE)',
       photoSrc: '',
       parents: '[Groom’s parents — edit in config]',
+      story:
+        'With a steady heart and a spirit of devotion, he looks forward to beginning this sacred journey surrounded by loved ones.',
     } satisfies WeddingPerson,
   },
 
-  /** Primary muhurtham — drives countdown & “Add to Calendar” */
   ceremony: {
     date: '2026-12-13',
     timeStart: '07:35',
@@ -74,7 +75,7 @@ export const weddingConfig = {
     timezone: 'Asia/Kolkata',
     venueName: '[Wedding venue name — edit in config]',
     address: '[Full venue address — edit in config]',
-    mapsUrl: '', // e.g. https://maps.google.com/?q=...
+    mapsUrl: '',
   },
 
   events: [
@@ -88,38 +89,28 @@ export const weddingConfig = {
       venueName: '[Wedding venue name — edit in config]',
       address: '[Full venue address — edit in config]',
       mapsUrl: '',
-      motif: 'muhurtham',
     },
-    // Add more events here when details are ready:
-    // { id: 'reception', nameEn: 'Reception', ... },
   ] satisfies WeddingEvent[],
 
   gallery: {
-    /** Images under /public or absolute URLs */
-    images: [
-      { src: '/assets/invitation.jpg', alt: 'Printed wedding invitation card' },
-    ],
+    images: [{ src: '/assets/invitation.jpg', alt: 'Wedding invitation keepsake' }],
   },
 
   contact: {
-    /** E.164 without + for wa.me link, e.g. 919876543210. Leave empty to hide WhatsApp. */
     whatsappNumber: '',
     whatsappMessage:
       'Vanakkam! We would like to confirm our presence at your wedding celebration.',
   },
 
   audio: {
-    /** Place an MP3 at public/audio/wedding-instrumental.mp3 or set a URL. Empty = control hidden. */
     src: '',
-    label: 'Traditional music',
+    label: 'Music',
   },
 
   closing: {
-    messageEn: 'With gratitude and folded hands, we await your auspicious presence.',
-    messageTa: 'உங்கள் ஆசிர்வாதத்திற்காக நன்றியுடன் காத்திருக்கிறோம்.',
-    signoffEn: '— With love, our families',
-    signoffTa: '— அன்புடன், எங்கள் குடும்பத்தினர்',
+    messageEn: 'With gratitude, we await your auspicious presence.',
+    messageTa: 'உங்கள் ஆசிர்வாதத்திற்காக நன்றியுடன்.',
+    signoffEn: 'With love, our families',
+    signoffTa: 'அன்புடன், எங்கள் குடும்பத்தினர்',
   },
 } as const
-
-export type WeddingConfig = typeof weddingConfig

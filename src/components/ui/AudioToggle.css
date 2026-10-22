@@ -1,28 +1,21 @@
 .audio-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.5rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid rgba(201, 162, 39, 0.55);
-  background: rgba(255, 252, 245, 0.92);
-  color: var(--maroon-dark);
-  font-size: 0.82rem;
-  font-weight: 600;
-  box-shadow: 0 4px 14px rgba(74, 18, 25, 0.12);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  background: transparent;
+  transition: border-color 0.2s;
 }
 
 .audio-toggle:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(74, 18, 25, 0.16);
+  border-color: var(--green);
 }
 
 .audio-toggle-icon {
-  font-size: 1rem;
-  line-height: 1;
-}
-
-.audio-toggle-text {
-  white-space: nowrap;
+  font-size: 0.95rem;
 }

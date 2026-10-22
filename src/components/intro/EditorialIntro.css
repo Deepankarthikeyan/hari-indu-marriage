@@ -1,0 +1,115 @@
+.editorial-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--ivory);
+}
+
+.intro-photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 20%;
+  transform: scale(1.02);
+  transition: transform 1.2s var(--ease-out);
+}
+
+.editorial-intro.is-exiting .intro-photo {
+  transform: scale(1.06);
+}
+
+.intro-photo-placeholder {
+  background:
+    linear-gradient(165deg, rgba(250, 248, 244, 0.2), rgba(212, 165, 160, 0.25)),
+    linear-gradient(120deg, var(--beige) 0%, var(--champagne) 45%, var(--rose-muted) 100%);
+}
+
+.intro-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(28, 26, 24, 0.35) 0%,
+    rgba(28, 26, 24, 0.15) 40%,
+    rgba(250, 248, 244, 0.75) 100%
+  );
+}
+
+.intro-skip {
+  position: absolute;
+  top: var(--gutter);
+  right: var(--gutter);
+  z-index: 2;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.intro-copy {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem var(--gutter);
+  max-width: 36rem;
+  color: #fff;
+  text-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.intro-eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+  opacity: 0.92;
+}
+
+.intro-names {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 12vw, 5.5rem);
+  font-weight: 400;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.35rem 0.75rem;
+  line-height: 1;
+  overflow: hidden;
+}
+
+.intro-names span {
+  display: inline-block;
+}
+
+.intro-amp {
+  font-style: italic;
+  font-size: 0.55em;
+  opacity: 0.85;
+}
+
+.intro-date {
+  margin: 1.25rem 0 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+}
+
+.intro-enter {
+  margin-top: 2rem;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  backdrop-filter: blur(6px);
+  transition: background 0.25s ease;
+}
+
+.intro-enter:hover {
+  background: rgba(255, 255, 255, 0.12);
+}

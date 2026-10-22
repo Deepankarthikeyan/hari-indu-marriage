@@ -1,39 +1,56 @@
-import { weddingConfig } from '../config/wedding'
+import { useEffect, useState } from 'react'
 import AudioToggle from './ui/AudioToggle'
-import InvitationHero from './sections/InvitationHero'
-import CoupleSection from './sections/CoupleSection'
+import HeroSection from './sections/HeroSection'
+import InviteStrip from './sections/InviteStrip'
+import StorySection from './sections/StorySection'
 import CountdownSection from './sections/CountdownSection'
 import EventsSection from './sections/EventsSection'
 import GallerySection from './sections/GallerySection'
 import ClosingSection from './sections/ClosingSection'
 import './MainSite.css'
 
+const NAV = [
+  { href: '#story', label: 'Story' },
+  { href: '#countdown', label: 'Countdown' },
+  { href: '#events', label: 'Events' },
+  { href: '#gallery', label: 'Gallery' },
+  { href: '#rsvp', label: 'RSVP' },
+]
+
 export default function MainSite() {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 48)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <div className="main-site">
-      <header className="site-header">
-        <p className="header-brand tamil">{weddingConfig.invitation.titleTa}</p>
-        <nav className="site-nav" aria-label="Invitation sections">
-          <a href="#invitation">Invitation</a>
-          <a href="#couple">Couple</a>
-          <a href="#countdown">Countdown</a>
-          <a href="#events">Events</a>
-          <a href="#gallery">Gallery</a>
+    <div className="site">
+      <header className={`site-nav ${scrolled ? 'is-scrolled' : ''}`}>
+        <a href="#top" className="site-logo">H &amp; I</a>
+        <nav aria-label="Primary">
+          {NAV.map((item) => (
+            <a key={item.href} href={item.href}>{item.label}</a>
+          ))}
         </nav>
-        <AudioToggle className="header-audio" />
+        <AudioToggle />
       </header>
 
-      <InvitationHero />
-      <CoupleSection />
-      <CountdownSection />
-      <EventsSection />
-      <GallerySection />
-      <ClosingSection />
+      <main>
+        <HeroSection />
+        <InviteStrip />
+        <StorySection />
+        <CountdownSection />
+        <EventsSection />
+        <GallerySection />
+        <ClosingSection />
+      </main>
 
-      <footer className="site-footer">
-        <p className="tamil">
-          {weddingConfig.couple.bride.nameTa} &amp; {weddingConfig.couple.groom.nameTa}
-        </p>
+      <footer className="site-foot">
+        <p>© {new Date().getFullYear()} — With love</p>
       </footer>
     </div>
   )

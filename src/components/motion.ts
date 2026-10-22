@@ -1,18 +1,15 @@
 import type { Transition, Variants } from 'framer-motion'
 
-export const gentleTransition: Transition = { duration: 0.75, ease: [0.22, 1, 0.36, 1] }
+export const ease: Transition['ease'] = [0.22, 1, 0.36, 1]
 
-export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: gentleTransition },
+export const reveal: Variants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease } },
 }
 
-export const fadeIn: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.9 } },
+export const maskReveal: Variants = {
+  hidden: { clipPath: 'inset(0 0 100% 0)' },
+  visible: { clipPath: 'inset(0 0 0% 0)', transition: { duration: 1.1, ease } },
 }
 
-export const scaleReveal: Variants = {
-  hidden: { opacity: 0, scale: 0.96 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 1.1, ease: [0.22, 1, 0.36, 1] } },
-}
+export const stagger = (delay = 0.08): Transition => ({ duration: 0.8, ease, delay })

@@ -1,91 +1,71 @@
-.section-head {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.section-head h2 {
-  margin: 0;
-  font-size: 1.75rem;
-  color: var(--maroon);
-  font-weight: 700;
-}
-
-.section-head p {
-  margin: 0.35rem 0 0;
-  font-style: italic;
-  opacity: 0.85;
-}
-
-.main-site {
-  background: var(--cream);
-  color: var(--text);
-  min-height: 100dvh;
-}
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem 1rem;
-  padding: 0.75rem 1rem;
-  background: rgba(255, 252, 245, 0.94);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(107, 30, 42, 0.1);
-}
-
-.header-brand {
-  margin: 0;
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: var(--maroon);
-}
-
 .site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem 0.85rem;
-  font-size: 0.82rem;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem var(--gutter);
+  transition: background 0.35s var(--ease-out), border-color 0.35s;
+  border-bottom: 1px solid transparent;
 }
 
-.site-nav a {
+.site-nav:not(.is-scrolled) .site-logo,
+.site-nav:not(.is-scrolled) nav a,
+.site-nav:not(.is-scrolled) .audio-toggle {
+  color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.site-nav.is-scrolled {
+  background: rgba(250, 248, 244, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom-color: var(--line);
+}
+
+.site-logo {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  letter-spacing: 0.08em;
   text-decoration: none;
-  color: var(--maroon-dark);
-  font-weight: 600;
+  color: inherit;
+  margin-right: auto;
 }
 
-.site-nav a:hover {
-  color: var(--gold);
+.site-nav nav {
+  display: none;
+  gap: 1.25rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
-.header-audio {
-  margin-left: auto;
+.site-nav nav a {
+  text-decoration: none;
+  color: var(--ink-soft);
 }
 
-@media (max-width: 768px) {
-  .site-header {
-    justify-content: center;
-    text-align: center;
+.site-nav nav a:hover {
+  color: var(--green);
+}
+
+@media (min-width: 900px) {
+  .site-nav nav {
+    display: flex;
   }
-
-  .header-audio {
-    margin-left: 0;
-    width: 100%;
-    justify-content: center;
-  }
 }
 
-.site-footer {
-  padding: 1rem 1.25rem 2.5rem;
+.site-foot {
+  padding: 1.5rem var(--gutter) 2rem;
   text-align: center;
-  background: linear-gradient(180deg, transparent, rgba(74, 18, 25, 0.04));
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  background: var(--green);
+  color: rgba(250, 248, 244, 0.75);
 }
 
-.site-footer > .tamil {
-  margin: 0 0 0.5rem;
-  font-weight: 700;
-  color: var(--maroon);
+.site-foot p {
+  margin: 0;
 }
