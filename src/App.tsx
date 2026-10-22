@@ -1,9 +1,9 @@
-import TraditionalInvitation from './components/traditional/TraditionalInvitation'
+import WeddingExperience from './experience/WeddingExperience'
 
 export default function App() {
   return (
     <div className="app-root">
-      <TraditionalInvitation />
+      <WeddingExperience />
     </div>
   )
 }
