@@ -1,4 +1,4 @@
-import { weddingConfig } from '../config/wedding'
+import { weddingConfig, type WeddingEvent } from '../config/wedding'
 
 /** Wall-clock ceremony start in the configured IANA timezone. */
 export function getCeremonyStartDate(): Date {
@@ -48,6 +48,54 @@ export function formatCeremonyDateDisplay(): { en: string; ta: string } {
   }).format(start)
 
   return { en, ta }
+}
+
+export function getEventStartDate(event: WeddingEvent): Date {
+  const { timezone } = weddingConfig.ceremony
+  const offset = getUtcOffsetForZone(timezone, `${event.date}T12:00:00`)
+  return new Date(`${event.date}T${event.timeStart}:00${offset}`)
+}
+
+export function getEventEndDate(event: WeddingEvent): Date {
+  const { timezone } = weddingConfig.ceremony
+  const end = event.timeEnd ?? event.timeStart
+  const offset = getUtcOffsetForZone(timezone, `${event.date}T12:00:00`)
+  return new Date(`${event.date}T${end}:00${offset}`)
+}
+
+export function formatInvitationDateLine(): string {
+  const { date, timezone } = weddingConfig.ceremony
+  const d = new Date(`${date}T12:00:00${getUtcOffsetForZone(timezone, `${date}T12:00:00`)}`)
+  return new Intl.DateTimeFormat('en-IN', {
+    timeZone: timezone,
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  }).format(d)
+}
+
+export function formatEventCalendarParts(event: WeddingEvent): { weekday: string; day: string; month: string } {
+  const start = getEventStartDate(event)
+  const { timezone } = weddingConfig.ceremony
+  const weekday = new Intl.DateTimeFormat('en-IN', { timeZone: timezone, weekday: 'long' }).format(start)
+  const day = new Intl.DateTimeFormat('en-IN', { timeZone: timezone, day: '2-digit' }).format(start)
+  const month = new Intl.DateTimeFormat('en-IN', { timeZone: timezone, month: 'long' }).format(start)
+  return { weekday, day, month }
+}
+
+export function formatEventTimeRange(event: WeddingEvent): string {
+  const { timezone } = weddingConfig.ceremony
+  const to12 = (t: string) => {
+    const d = new Date(`${event.date}T${t}:00${getUtcOffsetForZone(timezone, `${event.date}T12:00:00`)}`)
+    return new Intl.DateTimeFormat('en-IN', {
+      timeZone: timezone,
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+    }).format(d)
+  }
+  if (event.timeEnd) return `${to12(event.timeStart)} – ${to12(event.timeEnd)}`
+  return to12(event.timeStart)
 }
 
 export function formatCeremonyTimeDisplay(): { en: string; ta: string } {

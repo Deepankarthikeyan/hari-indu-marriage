@@ -1,64 +1,21 @@
-.site-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  font-size: 0.82rem;
-  text-decoration: none;
-  color: var(--maroon);
-  margin-right: auto;
+.site-wx {
+  position: relative;
+  min-height: 100dvh;
 }
 
-.site-logo .vel-motif {
-  color: var(--gold);
-}
-
-.site-nav {
+.wx-sound-slot {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 40;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem 1rem;
-  padding: 0.75rem var(--gutter);
-  transition: background 0.35s var(--ease-out), border-color 0.35s;
-  border-bottom: 1px solid transparent;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9000;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  cursor: pointer;
 }
 
-.site-nav.is-scrolled {
-  background: rgba(255, 248, 236, 0.94);
-  backdrop-filter: blur(10px);
-  border-bottom-color: var(--line);
-}
-
-.site-nav nav {
-  display: none;
-  flex-wrap: wrap;
-  gap: 0.65rem 0.85rem;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.site-nav nav a {
-  text-decoration: none;
-  color: var(--ink-soft);
-}
-
-.site-nav nav a:hover {
-  color: var(--peacock);
-}
-
-@media (min-width: 1100px) {
-  .site-nav nav {
-    display: flex;
-  }
-}
-
-.site-murugan .section-head h2,
-.invite-trad-inner h2 {
-  color: var(--maroon);
+.wx-sound-slot .audio-toggle {
+  color: #fff;
 }

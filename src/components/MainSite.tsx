@@ -1,75 +1,52 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useReducedMotion } from 'framer-motion'
+import AmbientPetals from './experience/AmbientPetals'
+import CurtainHero from './experience/CurtainHero'
+import WxStorySection from './wx/WxStorySection'
+import WxEventsSection from './wx/WxEventsSection'
+import WxFamilySection from './wx/WxFamilySection'
+import WxVenueSection from './wx/WxVenueSection'
+import WxBlessingsSection from './wx/WxBlessingsSection'
 import AudioToggle from './ui/AudioToggle'
-import VelMotif from './art/VelMotif'
-import { TempleSeparator } from './wedding/Ornaments'
-import HeroSection from './sections/HeroSection'
-import DivineBlessingsSection from './sections/DivineBlessingsSection'
-import InvitationSection from './sections/InvitationSection'
-import StorySection from './sections/StorySection'
-import TraditionsSection from './sections/TraditionsSection'
-import CountdownSection from './sections/CountdownSection'
-import EventsSection from './sections/EventsSection'
-import VenueSection from './sections/VenueSection'
-import GallerySection from './sections/GallerySection'
-import BlessingsSection from './sections/BlessingsSection'
-import RsvpSection from './sections/RsvpSection'
-import ClosingMuruganSection from './sections/ClosingMuruganSection'
-import SiteFooter from './sections/SiteFooter'
+import { useIntroSeen } from '../hooks/useIntroSeen'
+import { weddingConfig } from '../config/wedding'
 import './MainSite.css'
 
-const NAV = [
-  { href: '#divine', label: 'Blessings' },
-  { href: '#invitation', label: 'Invitation' },
-  { href: '#story', label: 'Couple' },
-  { href: '#traditions', label: 'Traditions' },
-  { href: '#events', label: 'Events' },
-  { href: '#venue', label: 'Venue' },
-  { href: '#gallery', label: 'Gallery' },
-  { href: '#rsvp', label: 'RSVP' },
-]
-
 export default function MainSite() {
-  const [scrolled, setScrolled] = useState(false)
+  const reduceMotion = useReducedMotion()
+  const { entered, markSeen } = useIntroSeen()
+  const { couple, footer } = weddingConfig
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 48)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    if (reduceMotion && !entered) markSeen()
+  }, [reduceMotion, entered, markSeen])
 
   return (
-    <div className="site site-murugan">
-      <header className={`site-nav ${scrolled ? 'is-scrolled' : ''}`}>
-        <a href="#top" className="site-logo">
-          <VelMotif size="sm" />
-          <span className="tamil">திருமண விழா</span>
-        </a>
-        <nav aria-label="Primary">
-          {NAV.map((item) => (
-            <a key={item.href} href={item.href}>{item.label}</a>
-          ))}
-        </nav>
+    <div className="site site-wx">
+      <AmbientPetals />
+      <div className="sound-toggle sound-toggle--wedding wx-sound-slot">
         <AudioToggle />
-      </header>
+      </div>
 
-      <main>
-        <HeroSection />
-        <TempleSeparator />
-        <DivineBlessingsSection />
-        <InvitationSection />
-        <StorySection />
-        <TraditionsSection />
-        <CountdownSection />
-        <EventsSection />
-        <VenueSection />
-        <GallerySection />
-        <BlessingsSection />
-        <RsvpSection />
-        <ClosingMuruganSection />
+      <main id="wedding-main" className="wedding-main">
+        <CurtainHero siteEntered={entered} onEnterSite={markSeen} />
+        <WxStorySection />
+        <WxEventsSection />
+        <WxFamilySection />
+        <WxVenueSection />
+        <WxBlessingsSection />
       </main>
 
-      <SiteFooter />
+      <footer className="wx-footer">
+        <p className="wx-footer__floral" aria-hidden>
+          🪷 ✦ 🪷 ✦ 🪷
+        </p>
+        <p>{footer.thanksEn}</p>
+        <p className="wx-footer__names tamil">
+          {couple.groom.nameEn} <span>&</span> {couple.bride.nameEn}
+        </p>
+        <p className="wx-footer__copy">© {new Date().getFullYear()}</p>
+      </footer>
     </div>
   )
 }

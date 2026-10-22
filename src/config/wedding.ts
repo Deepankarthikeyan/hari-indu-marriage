@@ -27,7 +27,7 @@ export type WeddingEvent = {
 export const weddingConfig = {
   intro: {
     skipLabel: 'Skip Intro',
-    sessionKey: 'hari-indu-tamil-wedding-v2',
+    sessionKey: 'hari-indu-marriageweb-v1',
     ctaEn: 'Tap to Open Invitation',
     ctaTa: 'அழைப்பிதழைத் திறக்க தட்டவும்',
     revealEn: 'Wedding Invitation',
@@ -45,6 +45,30 @@ export const weddingConfig = {
       'ஞானம், தைரியம், செழிப்பு, நிலையான மகிழ்ச்சி — முருகப்பெருமான் இந்த திருமணத்திற்கு அருளட்டும்.',
     closingEn: 'With gratitude for His divine grace upon our families.',
     closingTa: 'அவன் அருளுக்கு நன்றியுடன்.',
+  },
+
+  experience: {
+    stageBannerSrc: '/assets/wedding-stage-banner.jpg',
+    ambientPetals: true,
+  },
+
+  story: {
+    titleEn: 'Our Story',
+    subtitleEn: 'A journey written by destiny',
+    paragraphsEn: [
+      'With the blessings of our families and the grace of the Almighty, we are delighted to begin this sacred journey of togetherness. What started as a beautiful connection has blossomed into a bond we cherish deeply.',
+      'Surrounded by love, tradition, and the warmth of our dear ones, we invite you to witness and bless us as we unite in the presence of the divine — a celebration of faith, family, and forever.',
+    ],
+    signatureEn: '— Hariharan & Indhumathi',
+  },
+
+  venue: {
+    subtitleEn: 'Join us at our wedding venue',
+    journeyTitleEn: 'Follow the path to our mandapam',
+    routeEn: '[Route directions — edit in config]',
+    landmarks: ['[Landmark 1]', '[Landmark 2]', '[Landmark 3]'],
+    mapCaptionEn: 'Follow the golden route to our mandapam',
+    mapCaptionTa: 'பாதையைப் பின்தொடர்ந்து வாருங்கள்',
   },
 
   hero: {
