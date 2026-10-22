@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import AudioToggle from './ui/AudioToggle'
+import VelMotif from './art/VelMotif'
 import HeroSection from './sections/HeroSection'
+import DivineBlessingsSection from './sections/DivineBlessingsSection'
 import InvitationSection from './sections/InvitationSection'
 import StorySection from './sections/StorySection'
 import CountdownSection from './sections/CountdownSection'
@@ -9,10 +11,12 @@ import VenueSection from './sections/VenueSection'
 import GallerySection from './sections/GallerySection'
 import BlessingsSection from './sections/BlessingsSection'
 import RsvpSection from './sections/RsvpSection'
+import ClosingMuruganSection from './sections/ClosingMuruganSection'
 import SiteFooter from './sections/SiteFooter'
 import './MainSite.css'
 
 const NAV = [
+  { href: '#divine', label: 'Murugan' },
   { href: '#invitation', label: 'Invitation' },
   { href: '#story', label: 'Couple' },
   { href: '#countdown', label: 'Countdown' },
@@ -33,9 +37,12 @@ export default function MainSite() {
   }, [])
 
   return (
-    <div className="site">
+    <div className="site site-murugan">
       <header className={`site-nav ${scrolled ? 'is-scrolled' : ''}`}>
-        <a href="#top" className="site-logo tamil">திருமண அழைப்பிதழ்</a>
+        <a href="#top" className="site-logo">
+          <VelMotif size="sm" />
+          <span className="tamil">முருகன் அருள் திருமணம்</span>
+        </a>
         <nav aria-label="Primary">
           {NAV.map((item) => (
             <a key={item.href} href={item.href}>{item.label}</a>
@@ -46,6 +53,7 @@ export default function MainSite() {
 
       <main>
         <HeroSection />
+        <DivineBlessingsSection />
         <InvitationSection />
         <StorySection />
         <CountdownSection />
@@ -54,6 +62,7 @@ export default function MainSite() {
         <GallerySection />
         <BlessingsSection />
         <RsvpSection />
+        <ClosingMuruganSection />
       </main>
 
       <SiteFooter />

@@ -1,3 +1,18 @@
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-decoration: none;
+  color: var(--maroon);
+  margin-right: auto;
+}
+
+.site-logo .vel-motif {
+  color: var(--gold);
+}
+
 .site-nav {
   position: fixed;
   top: 0;
@@ -13,32 +28,17 @@
   border-bottom: 1px solid transparent;
 }
 
-.site-nav:not(.is-scrolled) .site-logo,
-.site-nav:not(.is-scrolled) nav a,
-.site-nav:not(.is-scrolled) .audio-toggle {
-  color: rgba(255, 248, 240, 0.95);
-  border-color: rgba(255, 248, 240, 0.35);
-}
-
 .site-nav.is-scrolled {
-  background: rgba(250, 246, 238, 0.94);
+  background: rgba(255, 248, 236, 0.94);
   backdrop-filter: blur(10px);
   border-bottom-color: var(--line);
-}
-
-.site-logo {
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-decoration: none;
-  color: var(--maroon);
-  margin-right: auto;
 }
 
 .site-nav nav {
   display: none;
   flex-wrap: wrap;
   gap: 0.65rem 0.85rem;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -49,21 +49,16 @@
 }
 
 .site-nav nav a:hover {
-  color: var(--maroon);
+  color: var(--peacock);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1100px) {
   .site-nav nav {
     display: flex;
   }
 }
 
-.section-head h2 {
-  font-size: clamp(2rem, 5vw, 3rem);
+.site-murugan .section-head h2,
+.invite-trad-inner h2 {
   color: var(--maroon);
-}
-
-.section-head p {
-  color: var(--leaf-green);
-  font-weight: 500;
 }

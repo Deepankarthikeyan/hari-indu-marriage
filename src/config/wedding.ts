@@ -27,21 +27,35 @@ export type WeddingEvent = {
 export const weddingConfig = {
   intro: {
     skipLabel: 'Skip Intro',
-    sessionKey: 'hari-indu-wedding-intro-seen',
-    ctaEn: 'Tap to Open Invitation',
-    ctaTa: 'அழைப்பிதழைத் திறக்க தட்டவும்',
-    blessingTa: 'ஶ்ரீ கணேசாய நம:',
+    sessionKey: 'hari-indu-murugan-intro-seen',
+    ctaEn: 'Enter with Blessings',
+    ctaTa: 'ஆசியுடன் நுழையவும்',
     revealEn: 'Wedding Invitation',
     revealTa: 'திருமண அழைப்பிதழ்',
   },
 
+  murugan: {
+    /** Optional custom devotional image under /public */
+    imageSrc: '',
+    imageAlt: 'Lord Murugan — divine blessing',
+    blessingTitleEn: 'Divine Blessings',
+    blessingTitleTa: 'முருகன் அருள்',
+    blessingEn:
+      'May Lord Murugan, embodiment of wisdom and courage, bless this union with grace, prosperity, and everlasting joy.',
+    blessingTa:
+      'ஞானமும் தைரியமும் தரும் முருகப்பெருமானின் அருள், இந்த திருமணத்திற்கு நல்வாழ்வும் மங்களமும் அருளட்டும்.',
+    closingEn: 'With gratitude for His divine grace upon our families.',
+    closingTa: 'அவன் அருளுக்கு நன்றியுடன், எங்கள் குடும்பங்கள்.',
+  },
+
   hero: {
     imageSrc: '',
-    imageAlt: 'Traditional wedding entrance',
-    blessingEn: 'With the Blessings of Our Families',
-    blessingTa: 'எங்கள் குடும்பத்தினர் ஆசியுடன்',
+    imageAlt: 'Lord Murugan devotional artwork',
+    blessingEn: 'With the Divine Blessings of Lord Murugan',
+    blessingTa: 'முருகப்பெருமானின் திவ்ய அருளுடன்',
     subtitleEn: 'Together with our families, we invite you to celebrate our wedding',
     subtitleTa: 'எங்கள் குடும்பத்தினர் சார்பாக, திருமண விழாவிற்கு அழைக்கிறோம்',
+    ctaEn: 'Explore Our Invitation',
   },
 
   invitation: {
@@ -82,7 +96,6 @@ export const weddingConfig = {
     venueName: '[Wedding venue name — edit in config]',
     address: '[Full venue address — edit in config]',
     mapsUrl: '',
-    /** Optional venue photo under /public */
     imageSrc: '',
   },
 
@@ -112,7 +125,6 @@ export const weddingConfig = {
   },
 
   rsvp: {
-    /** Receives RSVP via mailto when set */
     email: '',
     deadlineNote: 'Kindly respond before the date mentioned by our families.',
   },
@@ -129,7 +141,7 @@ export const weddingConfig = {
   },
 
   footer: {
-    thanksEn: 'Thank you for being part of our journey with love and blessings.',
+    thanksEn: 'Thank you for sharing in our joy with love and blessings.',
     thanksTa: 'உங்கள் அன்பும் ஆசியும் எங்களுக்கு பெரும் பொக்கிஷம்.',
   },
 } as const

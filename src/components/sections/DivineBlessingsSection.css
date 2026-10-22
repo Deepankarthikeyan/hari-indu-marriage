@@ -1,0 +1,46 @@
+.divine-blessings {
+  padding: var(--section-pad) var(--gutter);
+  background: var(--ivory);
+}
+
+.divine-grid {
+  max-width: 56rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .divine-grid {
+    grid-template-columns: 1fr 1.1fr;
+  }
+}
+
+.divine-art {
+  position: relative;
+  padding: 1.5rem;
+  background: linear-gradient(165deg, var(--sandstone), var(--ivory));
+  border: 1px solid rgba(198, 161, 91, 0.35);
+}
+
+.divine-vel-top {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.divine-copy h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--peacock);
+  margin-bottom: 1.25rem;
+}
+
+.divine-text {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.65;
+  margin: 0 0 1rem;
+  color: var(--ink-soft);
+}

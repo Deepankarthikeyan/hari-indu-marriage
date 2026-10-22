@@ -1,0 +1,30 @@
+.closing-murugan {
+  padding: var(--section-pad) var(--gutter);
+  background: linear-gradient(180deg, var(--peacock) 0%, #0f332c 100%);
+  color: var(--ivory);
+  text-align: center;
+}
+
+.closing-murugan-inner {
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.closing-vel {
+  margin: 0 auto 1rem;
+  color: var(--gold);
+}
+
+.closing-bless {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.closing-thanks {
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
+  opacity: 0.88;
+  line-height: 1.55;
+}
