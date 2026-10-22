@@ -2,22 +2,22 @@ import { useCallback, useEffect, useMemo, useState, type FormEvent } from 'react
 import { weddingConfig } from '../../config/wedding'
 import { useCeremonyCountdown } from '../../hooks/useCountdown'
 import { useIntroSeen } from '../../hooks/useIntroSeen'
+import { downloadIcsForEvent } from '../../utils/calendar'
 import {
   formatCeremonyDateDisplay,
   formatEventCalendarParts,
   formatEventTimeRange,
-  formatInvitationDateLine,
 } from '../../utils/datetime'
 import { shareInvitation } from '../../utils/share'
 import AudioToggle from '../ui/AudioToggle'
+import DecoDivider from './DecoDivider'
 import EnvelopeOverlay from './EnvelopeOverlay'
-import { SplitLetters } from './SplitLetters'
+import HeroTraditional from './HeroTraditional'
+import PageDecor from './PageDecor'
+import ToranRow from './ToranRow'
 
 function useGuestName() {
-  return useMemo(() => {
-    const to = new URLSearchParams(window.location.search).get('to')
-    return to?.trim() || ''
-  }, [])
+  return useMemo(() => new URLSearchParams(window.location.search).get('to')?.trim() ?? '', [])
 }
 
 function GoldLine() {
@@ -27,18 +27,20 @@ function GoldLine() {
 export default function TraditionalInvitation() {
   const { entered, markSeen } = useIntroSeen()
   const [closing, setClosing] = useState(false)
+  const [flash, setFlash] = useState(false)
   const guestName = useGuestName()
   const cd = useCeremonyCountdown()
-  const { couple, traditional, invitation, gallery, ceremony, events, rsvp, contact, footer } = weddingConfig
-  const dateLine = formatInvitationDateLine()
+  const { couple, traditional, gallery, ceremony, events, rsvp, contact, footer } = weddingConfig
   const date = formatCeremonyDateDisplay()
+  const mainEvent = events[0]
 
   const openInvitation = useCallback(() => {
+    setFlash(true)
     setClosing(true)
     window.setTimeout(() => {
       markSeen()
       document.getElementById('si-hero')?.scrollIntoView({ behavior: 'smooth' })
-    }, 550)
+    }, 700)
   }, [markSeen])
 
   useEffect(() => {
@@ -48,19 +50,24 @@ export default function TraditionalInvitation() {
     }
   }, [entered])
 
+  const mapEmbedSrc = useMemo(() => {
+    const q = [ceremony.venueName, ceremony.address].filter(Boolean).join(', ')
+    return `https://www.google.com/maps?q=${encodeURIComponent(q)}&output=embed`
+  }, [ceremony.address, ceremony.venueName])
+
   const onRsvp = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const fd = new FormData(e.currentTarget)
     const attending = String(fd.get('attending') ?? '')
     const body = [
       `RSVP — ${couple.groom.nameEn} & ${couple.bride.nameEn}`,
-      `Guest: ${String(fd.get('name') ?? '').trim()}`,
-      `Attending: ${attending === 'yes' ? 'Joyfully Accept' : attending === 'no' ? 'Respectfully Decline' : '—'}`,
+      `Name: ${String(fd.get('name') ?? '').trim()}`,
+      `Attending: ${attending === 'yes' ? 'Joyfully Accept' : 'Respectfully Decline'}`,
       fd.get('message') ? `Message: ${String(fd.get('message')).trim()}` : '',
     ]
       .filter(Boolean)
       .join('\n')
-    const email = weddingConfig.rsvp.email?.trim()
+    const email = rsvp.email?.trim()
     const wa = contact.whatsappNumber?.trim()
     if (email) {
       window.location.href = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent('Wedding RSVP')}&body=${encodeURIComponent(body)}`
@@ -71,36 +78,27 @@ export default function TraditionalInvitation() {
     }
   }
 
-  const groomDisplay = couple.groom.nameEn.replace(/^\S+\s/, '') || couple.groom.nameEn
-  const brideDisplay = couple.bride.nameEn.replace(/^\S+\s/, '') || couple.bride.nameEn
+  const shareWa = () => {
+    const text = `${couple.groom.nameEn} & ${couple.bride.nameEn} — ${window.location.href}`
+    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer')
+  }
+
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href)
+    } catch {
+      /* ignore */
+    }
+  }
 
   return (
-    <div className="traditional-invitation">
-      {!entered && <EnvelopeOverlay guestName={guestName} closing={closing} onOpen={openInvitation} />}
+    <div className="south-indian">
+      <PageDecor />
+      {!entered && <EnvelopeOverlay flash={flash} closing={closing} onOpen={openInvitation} />}
 
-      <div className={entered ? '' : 'si-main--hidden'}>
-        <section id="si-hero" className="si-hero si-section">
-          <div className="si-hero__content">
-            <p className="si-hero__blessing">{traditional.quoteEn}</p>
-            <div className="si-hero__ornament">
-              <img className="si-hero__ornament-img" src="/assets/south-indian/gold-divider.svg" alt="" />
-            </div>
-            {guestName && <p className="si-hero__guest-greeting">Dear {guestName},</p>}
-            <p className="si-hero__formal">{traditional.togetherEn}</p>
-            <div className="si-hero__names">
-              <h1 className="si-hero__name">
-                <SplitLetters text={brideDisplay} />
-              </h1>
-              <span className="si-hero__ampersand">&</span>
-              <h1 className="si-hero__name">
-                <SplitLetters text={groomDisplay} />
-              </h1>
-            </div>
-            <p className="si-hero__invite-text">{invitation.lineEn}</p>
-            <p className="si-hero__date">{dateLine}</p>
-            <p className="si-hero__venue">{ceremony.venueName}{ceremony.address ? `, ${ceremony.address}` : ''}</p>
-          </div>
-        </section>
+      <div className={entered ? 'si-page' : 'si-main--hidden'}>
+        <HeroTraditional />
+        <DecoDivider />
 
         <section id="couple" className="si-section si-couple">
           <h2 className="si-couple__heading">{traditional.coupleHeading}</h2>
@@ -140,6 +138,8 @@ export default function TraditionalInvitation() {
           </div>
         </section>
 
+        <DecoDivider />
+
         <section id="events" className="si-section si-events">
           <h2 className="si-events__heading">{traditional.eventsHeading}</h2>
           <GoldLine />
@@ -170,7 +170,7 @@ export default function TraditionalInvitation() {
           <p className="si-countdown__subheading">{traditional.countdownSub}</p>
           <div className="si-countdown__timer">
             {cd.isPast ? (
-              <p className="si-countdown__subheading tamil">இன்று நம் திருமண நாள்!</p>
+              <p className="si-countdown__subheading">Today is our wedding day!</p>
             ) : (
               <>
                 <div className="si-countdown__unit">
@@ -195,9 +195,6 @@ export default function TraditionalInvitation() {
               </>
             )}
           </div>
-          <p className="si-countdown__subheading" style={{ marginTop: '1rem' }}>
-            Muhurtham · {date.en}
-          </p>
         </section>
 
         <section id="gallery" className="si-section si-gallery">
@@ -205,24 +202,58 @@ export default function TraditionalInvitation() {
           <GoldLine />
           <div className="si-gallery__grid">
             {gallery.images.map((img) => (
-              <figure key={img.src} className="si-gallery__item">
+              <button key={img.src} type="button" className="si-gallery__item">
                 <img className="si-gallery__image" src={img.src} alt={img.alt} loading="lazy" />
-              </figure>
+              </button>
             ))}
+          </div>
+        </section>
+
+        <section id="story-video" className="si-section si-video">
+          <h2 className="si-video__heading">{traditional.storyHeading}</h2>
+          <GoldLine />
+          <div className="si-video__wrapper">
+            {traditional.storyVideoId ? (
+              <iframe
+                className="si-video__iframe"
+                src={`https://www.youtube.com/embed/${traditional.storyVideoId}?rel=0&modestbranding=1`}
+                title={traditional.storyHeading}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+              />
+            ) : (
+              <img className="si-gallery__image" src="/assets/invitation.jpg" alt="Our story" style={{ width: '100%', display: 'block' }} />
+            )}
           </div>
         </section>
 
         <section id="venue" className="si-section si-venue">
           <h2 className="si-venue__heading">{traditional.venueHeading}</h2>
           <GoldLine />
-          <div className="si-venue__card">
-            <h3 className="si-venue__name">{ceremony.venueName}</h3>
-            <p className="si-venue__address">{ceremony.address}</p>
-            {ceremony.mapsUrl?.trim() && (
-              <a href={ceremony.mapsUrl} className="si-event-card__directions" target="_blank" rel="noopener noreferrer">
-                Get Directions
-              </a>
-            )}
+          <div className="si-venue__content">
+            <div className="si-venue__details">
+              <h3 className="si-venue__name">{ceremony.venueName}</h3>
+              <p className="si-venue__address">{ceremony.address}</p>
+              {ceremony.mapsUrl?.trim() && (
+                <a href={ceremony.mapsUrl} className="si-venue__directions-btn" target="_blank" rel="noopener noreferrer">
+                  Get Directions
+                </a>
+              )}
+            </div>
+            <div className="si-venue__map">
+              <iframe
+                src={mapEmbedSrc}
+                className="si-venue__map-iframe"
+                width="100%"
+                height="300"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Venue location"
+              />
+            </div>
           </div>
         </section>
 
@@ -252,24 +283,43 @@ export default function TraditionalInvitation() {
               <textarea id="rsvp-message" name="message" className="si-rsvp__input si-rsvp__textarea" placeholder="Send your wishes..." rows={3} />
             </div>
             <button type="submit" className="si-rsvp__submit">Confirm Attendance</button>
-            <p className="si-rsvp__note">{rsvp.deadlineNote}</p>
           </form>
           <div className="si-share">
             <p className="si-share__label">Share This Invitation</p>
-            <button
-              type="button"
-              className="si-share__btn"
-              onClick={() => void shareInvitation(`${couple.groom.nameEn} & ${couple.bride.nameEn}`, invitation.lineEn)}
-            >
-              Share link
-            </button>
+            <div className="si-share__buttons">
+              <button type="button" className="si-share__btn si-share__btn--whatsapp" onClick={shareWa}>WhatsApp</button>
+              {mainEvent && (
+                <button type="button" className="si-share__btn si-share__btn--calendar" onClick={() => downloadIcsForEvent(mainEvent)}>
+                  Add to Calendar
+                </button>
+              )}
+              <button type="button" className="si-share__btn si-share__btn--copy" onClick={() => void copyLink()}>
+                Copy link
+              </button>
+              <button
+                type="button"
+                className="si-share__btn si-share__btn--copy"
+                onClick={() => void shareInvitation(`${couple.groom.nameEn} & ${couple.bride.nameEn}`, weddingConfig.invitation.lineEn)}
+              >
+                Share
+              </button>
+            </div>
           </div>
         </section>
 
         <footer className="si-footer">
-          <p>{footer.thanksEn}</p>
-          <p className="tamil">{footer.thanksTa}</p>
-          <p className="si-footer__names">{couple.groom.nameEn} & {couple.bride.nameEn}</p>
+          <div className="si-footer__scene">
+            <div className="si-footer__text">
+              <p className="si-footer__label">The Wedding of</p>
+              <p className="si-footer__couple">{couple.groom.nameEn} & {couple.bride.nameEn}</p>
+              <GoldLine />
+              <p className="si-footer__credit">{footer.thanksEn}</p>
+              <p className="si-footer__credit tamil">{footer.thanksTa}</p>
+              <p className="si-footer__credit">Muhurtham · {date.en}</p>
+            </div>
+            <img className="si-footer__gopuram-img" src="/assets/south-indian/gopuram-illustration-cropped.png" alt="South Indian temple gopuram" />
+          </div>
+          <ToranRow variant="footer" />
         </footer>
       </div>
 

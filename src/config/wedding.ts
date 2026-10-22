@@ -27,7 +27,7 @@ export type WeddingEvent = {
 export const weddingConfig = {
   intro: {
     skipLabel: 'Skip Intro',
-    sessionKey: 'hari-indu-traditional-si-v1',
+    sessionKey: 'hari-indu-traditional-si-v2',
     ctaEn: 'Open Invitation',
     ctaTa: 'அழைப்பிதழைத் திறக்க தட்டவும்',
     revealEn: 'Wedding Invitation',
@@ -59,6 +59,9 @@ export const weddingConfig = {
     quoteEn:
       'Two hearts united, one beautiful journey begins. Wishing you a lifetime of togetherness.',
     togetherEn: 'Together with the blessings of their families',
+    inviteText: 'cordially invite you to celebrate their wedding',
+    storyHeading: 'Our Story',
+    storyVideoId: '',
     coupleHeading: 'About the Couple',
     eventsHeading: 'Wedding Events',
     countdownHeading: 'Counting Down To',
