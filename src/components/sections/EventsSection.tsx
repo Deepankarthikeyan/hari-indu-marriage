@@ -44,8 +44,8 @@ export default function EventsSection() {
   return (
     <section className="events-editorial" id="events">
       <motion.header variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-        <h2>Weekend Schedule</h2>
-        <p className="tamil">விழா நிகழ்ச்சிகள்</p>
+        <p className="section-eyebrow tamil">விழா நிகழ்ச்சிகள்</p>
+        <h2>Wedding Events</h2>
       </motion.header>
 
       <div className="timeline">

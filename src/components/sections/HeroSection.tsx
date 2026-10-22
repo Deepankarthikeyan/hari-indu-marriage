@@ -1,75 +1,76 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { weddingConfig } from '../../config/wedding'
-import { formatCeremonyDateDisplay } from '../../utils/datetime'
+import { formatCeremonyDateDisplay, formatCeremonyTimeDisplay } from '../../utils/datetime'
+import TraditionalEntrance from '../decor/TraditionalEntrance'
+import { FallingPetals } from '../decor/FallingPetals'
 import { reveal } from '../motion'
 import './HeroSection.css'
 
 export default function HeroSection() {
   const reduceMotion = useReducedMotion()
-  const { hero, couple } = weddingConfig
+  const { hero, couple, ceremony } = weddingConfig
   const date = formatCeremonyDateDisplay()
+  const time = formatCeremonyTimeDisplay()
   const hasImage = Boolean(hero.imageSrc?.trim())
 
   return (
-    <section className="hero" id="top" aria-label="Welcome">
-      <div className={`hero-visual ${hasImage ? 'has-photo' : 'is-placeholder'}`}>
+    <section className="hero-trad" id="top">
+      <div className="hero-trad-bg">
         {hasImage ? (
-          <img src={hero.imageSrc} alt={hero.imageAlt} className="hero-img" fetchPriority="high" />
+          <img src={hero.imageSrc} alt={hero.imageAlt} className="hero-trad-photo" />
         ) : (
-          <div className="hero-img hero-img-fallback" role="img" aria-label="Hero photograph placeholder" />
+          <div className="hero-trad-photo hero-trad-photo-fallback" />
         )}
-        <div className="hero-scrim" aria-hidden />
+        <div className="hero-trad-scrim" />
+        <TraditionalEntrance variant="full" />
+        {!reduceMotion && <FallingPetals count={14} />}
       </div>
 
-      <div className="hero-content">
-        <motion.p
-          className="hero-eyebrow"
-          variants={reveal}
-          initial="hidden"
-          animate="visible"
-          transition={{ delay: reduceMotion ? 0 : 0.15 }}
-        >
-          <span>{hero.subtitleEn}</span>
-          <span className="tamil hero-eyebrow-ta">{hero.subtitleTa}</span>
+      <div className="hero-trad-content">
+        <motion.p className="hero-trad-bless tamil" {...motionProps(reduceMotion, 0.1)}>
+          {hero.blessingTa}
+        </motion.p>
+        <motion.p className="hero-trad-bless-en" {...motionProps(reduceMotion, 0.15)}>
+          {hero.blessingEn}
         </motion.p>
 
-        <motion.h1
-          className="hero-title"
-          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <span className="hero-name">{couple.bride.nameEn}</span>
-          <span className="hero-amp">&</span>
-          <span className="hero-name">{couple.groom.nameEn}</span>
+        <motion.h1 className="hero-trad-names" {...motionProps(reduceMotion, 0.25)}>
+          <span className="tamil">{couple.bride.nameTa}</span>
+          <span className="hero-trad-amp">&</span>
+          <span className="tamil">{couple.groom.nameTa}</span>
         </motion.h1>
-
-        <motion.p
-          className="hero-date tamil"
-          variants={reveal}
-          initial="hidden"
-          animate="visible"
-          transition={{ delay: 0.45 }}
-        >
-          {date.ta}
-        </motion.p>
-        <motion.p className="hero-date-en" variants={reveal} initial="hidden" animate="visible" transition={{ delay: 0.5 }}>
-          {date.en}
+        <motion.p className="hero-trad-names-en" {...motionProps(reduceMotion, 0.35)}>
+          {couple.bride.nameEn} & {couple.groom.nameEn}
         </motion.p>
 
-        <motion.a
-          href="#story"
-          className="hero-scroll"
-          variants={reveal}
-          initial="hidden"
-          animate="visible"
-          transition={{ delay: 0.7 }}
-          aria-label="Scroll to story"
-        >
-          <span>Scroll</span>
-          <span className="hero-scroll-line" aria-hidden />
+        <motion.p className="hero-trad-invite tamil" {...motionProps(reduceMotion, 0.45)}>
+          {hero.subtitleTa}
+        </motion.p>
+        <motion.p className="hero-trad-invite-en" {...motionProps(reduceMotion, 0.5)}>
+          {hero.subtitleEn}
+        </motion.p>
+
+        <motion.div className="hero-trad-meta" {...motionProps(reduceMotion, 0.55)}>
+          <p>{date.en}</p>
+          <p className="tamil">{date.ta}</p>
+          <p>{time.en}</p>
+          <p className="hero-trad-venue">{ceremony.venueName}</p>
+        </motion.div>
+
+        <motion.a href="#invitation" className="btn-primary hero-trad-cta" {...motionProps(reduceMotion, 0.65)}>
+          View Wedding Invitation
         </motion.a>
       </div>
     </section>
   )
+}
+
+function motionProps(reduce: boolean | null, delay: number) {
+  if (reduce) return {}
+  return {
+    variants: reveal,
+    initial: 'hidden' as const,
+    animate: 'visible' as const,
+    transition: { delay },
+  }
 }

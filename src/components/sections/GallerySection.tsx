@@ -19,8 +19,8 @@ export default function GallerySection() {
   return (
     <section className="gallery-editorial" id="gallery">
       <motion.header variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-        <h2>Gallery</h2>
-        <p className="tamil">நினைவுகள்</p>
+        <p className="section-eyebrow tamil">நினைவுகள்</p>
+        <h2>Photo Gallery</h2>
       </motion.header>
 
       <div className="gallery-masonry">

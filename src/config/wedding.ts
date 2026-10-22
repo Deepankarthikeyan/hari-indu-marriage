@@ -6,10 +6,8 @@ export type WeddingPerson = {
   nameEn: string
   nameTa: string
   subtitle?: string
-  /** Portrait for story section */
   photoSrc?: string
   parents?: string
-  /** Short personal story (editable) */
   story?: string
 }
 
@@ -28,28 +26,31 @@ export type WeddingEvent = {
 
 export const weddingConfig = {
   intro: {
-    skipLabel: 'Skip',
+    skipLabel: 'Skip Intro',
     sessionKey: 'hari-indu-wedding-intro-seen',
-    ctaEn: 'Open with Love',
-    ctaTa: 'அன்புடன் திறக்கவும்',
+    ctaEn: 'Tap to Open Invitation',
+    ctaTa: 'அழைப்பிதழைத் திறக்க தட்டவும்',
     blessingTa: 'ஶ்ரீ கணேசாய நம:',
-    revealEn: 'Two hearts, one sacred vow',
-    revealTa: 'இரு இதயங்கள் · ஒரு புனித வாக்கு',
+    revealEn: 'Wedding Invitation',
+    revealTa: 'திருமண அழைப்பிதழ்',
   },
 
   hero: {
-    /** Full-bleed hero photograph — add under public/ e.g. /photos/hero.jpg */
     imageSrc: '',
-    imageAlt: 'Wedding portrait',
-    subtitleEn: 'Together with our families',
-    subtitleTa: 'எங்கள் குடும்பத்தினர் சார்பாக',
+    imageAlt: 'Traditional wedding entrance',
+    blessingEn: 'With the Blessings of Our Families',
+    blessingTa: 'எங்கள் குடும்பத்தினர் ஆசியுடன்',
+    subtitleEn: 'Together with our families, we invite you to celebrate our wedding',
+    subtitleTa: 'எங்கள் குடும்பத்தினர் சார்பாக, திருமண விழாவிற்கு அழைக்கிறோம்',
   },
 
   invitation: {
-    lineEn: 'We joyfully invite you to celebrate our wedding',
-    lineTa: 'எங்கள் திருமண விழாவில் கலந்து கொண்டு ஆசிர்வதிக்க வேண்டுகிறோம்',
-    closingEn: 'Your presence and blessings will mean the world to us.',
-    closingTa: 'உங்கள் வருகையும் ஆசியும் எங்களுக்குப் பெரும் மகிழ்ச்சி.',
+    titleTa: 'திருமண அழைப்பிதழ்',
+    titleEn: 'Wedding Invitation',
+    lineEn: 'We joyfully invite you to witness and bless our sacred union',
+    lineTa: 'எங்கள் புனித திருமணத்தை காணவும் ஆசிர்வதிக்கவும் அழைக்கிறோம்',
+    closingEn: 'Your presence and blessings will make our celebration complete.',
+    closingTa: 'உங்கள் வருகையும் ஆசியும் எங்கள் மகிழ்ச்சியை நிறைவு செய்யும்.',
   },
 
   couple: {
@@ -81,6 +82,8 @@ export const weddingConfig = {
     venueName: '[Wedding venue name — edit in config]',
     address: '[Full venue address — edit in config]',
     mapsUrl: '',
+    /** Optional venue photo under /public */
+    imageSrc: '',
   },
 
   events: [
@@ -101,6 +104,19 @@ export const weddingConfig = {
     images: [{ src: '/assets/invitation.jpg', alt: 'Wedding invitation keepsake' }],
   },
 
+  blessings: {
+    brideFamilyEn: '[Message from bride’s family — edit in config]',
+    brideFamilyTa: '[மணமகள் குடும்ப செய்தி]',
+    groomFamilyEn: '[Message from groom’s family — edit in config]',
+    groomFamilyTa: '[மணமகன் குடும்ப செய்தி]',
+  },
+
+  rsvp: {
+    /** Receives RSVP via mailto when set */
+    email: '',
+    deadlineNote: 'Kindly respond before the date mentioned by our families.',
+  },
+
   contact: {
     whatsappNumber: '',
     whatsappMessage:
@@ -112,10 +128,8 @@ export const weddingConfig = {
     label: 'Music',
   },
 
-  closing: {
-    messageEn: 'With gratitude, we await your auspicious presence.',
-    messageTa: 'உங்கள் ஆசிர்வாதத்திற்காக நன்றியுடன்.',
-    signoffEn: 'With love, our families',
-    signoffTa: 'அன்புடன், எங்கள் குடும்பத்தினர்',
+  footer: {
+    thanksEn: 'Thank you for being part of our journey with love and blessings.',
+    thanksTa: 'உங்கள் அன்பும் ஆசியும் எங்களுக்கு பெரும் பொக்கிஷம்.',
   },
 } as const

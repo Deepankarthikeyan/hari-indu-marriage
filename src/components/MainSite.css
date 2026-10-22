@@ -5,9 +5,10 @@
   right: 0;
   z-index: 40;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 1rem;
-  padding: 0.85rem var(--gutter);
+  gap: 0.5rem 1rem;
+  padding: 0.75rem var(--gutter);
   transition: background 0.35s var(--ease-out), border-color 0.35s;
   border-bottom: 1px solid transparent;
 }
@@ -15,30 +16,30 @@
 .site-nav:not(.is-scrolled) .site-logo,
 .site-nav:not(.is-scrolled) nav a,
 .site-nav:not(.is-scrolled) .audio-toggle {
-  color: rgba(255, 255, 255, 0.92);
-  border-color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 248, 240, 0.95);
+  border-color: rgba(255, 248, 240, 0.35);
 }
 
 .site-nav.is-scrolled {
-  background: rgba(250, 248, 244, 0.92);
+  background: rgba(250, 246, 238, 0.94);
   backdrop-filter: blur(10px);
   border-bottom-color: var(--line);
 }
 
 .site-logo {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-size: 0.9rem;
   text-decoration: none;
-  color: inherit;
+  color: var(--maroon);
   margin-right: auto;
 }
 
 .site-nav nav {
   display: none;
-  gap: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.65rem 0.85rem;
   font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -48,24 +49,21 @@
 }
 
 .site-nav nav a:hover {
-  color: var(--green);
+  color: var(--maroon);
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .site-nav nav {
     display: flex;
   }
 }
 
-.site-foot {
-  padding: 1.5rem var(--gutter) 2rem;
-  text-align: center;
-  font-size: 0.78rem;
-  color: var(--ink-soft);
-  background: var(--green);
-  color: rgba(250, 248, 244, 0.75);
+.section-head h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--maroon);
 }
 
-.site-foot p {
-  margin: 0;
+.section-head p {
+  color: var(--leaf-green);
+  font-weight: 500;
 }

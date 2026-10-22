@@ -1,18 +1,23 @@
 import { useEffect, useState } from 'react'
 import AudioToggle from './ui/AudioToggle'
 import HeroSection from './sections/HeroSection'
-import InviteStrip from './sections/InviteStrip'
+import InvitationSection from './sections/InvitationSection'
 import StorySection from './sections/StorySection'
 import CountdownSection from './sections/CountdownSection'
 import EventsSection from './sections/EventsSection'
+import VenueSection from './sections/VenueSection'
 import GallerySection from './sections/GallerySection'
-import ClosingSection from './sections/ClosingSection'
+import BlessingsSection from './sections/BlessingsSection'
+import RsvpSection from './sections/RsvpSection'
+import SiteFooter from './sections/SiteFooter'
 import './MainSite.css'
 
 const NAV = [
-  { href: '#story', label: 'Story' },
+  { href: '#invitation', label: 'Invitation' },
+  { href: '#story', label: 'Couple' },
   { href: '#countdown', label: 'Countdown' },
   { href: '#events', label: 'Events' },
+  { href: '#venue', label: 'Venue' },
   { href: '#gallery', label: 'Gallery' },
   { href: '#rsvp', label: 'RSVP' },
 ]
@@ -30,7 +35,7 @@ export default function MainSite() {
   return (
     <div className="site">
       <header className={`site-nav ${scrolled ? 'is-scrolled' : ''}`}>
-        <a href="#top" className="site-logo">H &amp; I</a>
+        <a href="#top" className="site-logo tamil">திருமண அழைப்பிதழ்</a>
         <nav aria-label="Primary">
           {NAV.map((item) => (
             <a key={item.href} href={item.href}>{item.label}</a>
@@ -41,17 +46,17 @@ export default function MainSite() {
 
       <main>
         <HeroSection />
-        <InviteStrip />
+        <InvitationSection />
         <StorySection />
         <CountdownSection />
         <EventsSection />
+        <VenueSection />
         <GallerySection />
-        <ClosingSection />
+        <BlessingsSection />
+        <RsvpSection />
       </main>
 
-      <footer className="site-foot">
-        <p>© {new Date().getFullYear()} — With love</p>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

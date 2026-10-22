@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { weddingConfig } from '../../config/wedding'
 import { formatCeremonyDateDisplay } from '../../utils/datetime'
 import AudioToggle from '../ui/AudioToggle'
+import TraditionalEntrance from '../decor/TraditionalEntrance'
 import './LoveDoorIntro.css'
 
 type Phase = 'closed' | 'opening' | 'revealed' | 'exit'
@@ -39,9 +40,8 @@ export default function LoveDoorIntro({ onComplete }: Props) {
   const openDoors = useCallback(() => {
     if (phase !== 'closed') return
     setPhase('opening')
-    window.setTimeout(() => setPhase('revealed'), 2200)
-    window.setTimeout(() => finish(), reduceMotion ? 400 : 3800)
-  }, [phase, finish, reduceMotion])
+    window.setTimeout(() => setPhase('revealed'), 2400)
+  }, [phase])
 
   useEffect(() => {
     if (reduceMotion) onComplete()
@@ -68,6 +68,8 @@ export default function LoveDoorIntro({ onComplete }: Props) {
         )}
         <div className="ldi-golden-mist" aria-hidden />
         <div className={`ldi-kolam ${doorsOpen ? 'is-visible' : ''}`} aria-hidden />
+        {doorsOpen && <TraditionalEntrance variant="full" className="ldi-mandap-decor" />}
+        <div className={`ldi-light-rays ${doorsOpen ? 'is-active' : ''}`} aria-hidden />
       </div>
 
       <div className="ldi-petals" aria-hidden>
@@ -138,6 +140,18 @@ export default function LoveDoorIntro({ onComplete }: Props) {
               <p className="ldi-reveal-line tamil">{weddingConfig.intro.revealTa}</p>
               <p className="ldi-reveal-line">{weddingConfig.intro.revealEn}</p>
               <p className="ldi-date">{date.en}</p>
+              {phase === 'revealed' && (
+                <motion.button
+                  type="button"
+                  className="ldi-continue"
+                  onClick={finish}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  View Wedding Invitation
+                </motion.button>
+              )}
             </motion.div>
           )}
         </AnimatePresence>

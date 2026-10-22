@@ -1,6 +1,6 @@
 .events-editorial {
   padding: var(--section-pad) var(--gutter);
-  background: linear-gradient(180deg, var(--beige) 0%, var(--ivory) 100%);
+  background: var(--cream);
 }
 
 .events-editorial header {

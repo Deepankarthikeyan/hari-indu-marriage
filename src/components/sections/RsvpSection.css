@@ -1,0 +1,64 @@
+.rsvp-trad {
+  padding: var(--section-pad) var(--gutter);
+  background: var(--maroon-deep);
+  color: var(--ivory);
+}
+
+.rsvp-inner {
+  max-width: 28rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.rsvp-inner h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 0.75rem;
+}
+
+.rsvp-note {
+  margin: 0 0 2rem;
+  font-size: 0.92rem;
+  opacity: 0.85;
+}
+
+.rsvp-form {
+  display: grid;
+  gap: 1rem;
+  text-align: left;
+}
+
+.rsvp-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rsvp-form input,
+.rsvp-form textarea {
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 248, 240, 0.25);
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--ivory);
+  font: inherit;
+  border-radius: 2px;
+}
+
+.rsvp-form .btn-primary {
+  margin-top: 0.5rem;
+  width: 100%;
+  border-color: var(--gold);
+}
+
+.rsvp-success {
+  padding: 1.25rem;
+  border: 1px solid var(--gold);
+  line-height: 1.5;
+}
+
+.rsvp-error {
+  color: #f4a0a0;
+  font-size: 0.88rem;
+  margin: 0;
+}

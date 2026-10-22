@@ -57,8 +57,8 @@ export default function StorySection() {
   return (
     <section className="story-section" id="story">
       <motion.header className="story-head" variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-        <h2>Our Story</h2>
-        <p className="tamil">மணமக்கள்</p>
+        <p className="section-eyebrow tamil">மணமக்கள்</p>
+        <h2>Meet the Couple</h2>
       </motion.header>
 
       <StoryBlock person={couple.bride} role="bride" align="left" />
