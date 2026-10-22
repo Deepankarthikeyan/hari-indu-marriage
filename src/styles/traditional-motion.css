@@ -1,0 +1,272 @@
+/* Creative love + traditional motion layer */
+
+.south-indian--love .si-page {
+  animation: siPageIn 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes siPageIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.si-love-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  overflow: hidden;
+}
+
+.si-love-petal,
+.si-love-heart {
+  position: absolute;
+  top: -5vh;
+  animation: siLoveDrift linear infinite;
+  opacity: 0;
+}
+
+.si-love-petal {
+  width: 10px;
+  height: 10px;
+  border-radius: 50% 0 50% 50%;
+  background: linear-gradient(135deg, #ffd6e5, #e8862a);
+}
+
+.si-love-heart {
+  font-size: 12px;
+  color: rgba(139, 26, 26, 0.45);
+}
+
+@keyframes siLoveDrift {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  8% { opacity: 0.75; }
+  92% { opacity: 0.5; }
+  100% { transform: translateY(110vh) rotate(540deg); opacity: 0; }
+}
+
+.si-bridge {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.si-bridge__line {
+  width: min(70%, 200px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--si-gold), transparent);
+  transform: scaleX(0);
+  animation: siBridgeLine 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.si-bridge.is-visible .si-bridge__line {
+  animation-play-state: running;
+}
+
+@keyframes siBridgeLine {
+  to { transform: scaleX(1); }
+}
+
+.si-bridge__icon {
+  font-size: 1.1rem;
+  color: var(--si-maroon);
+  opacity: 0;
+  transform: scale(0.6);
+  animation: siBridgePop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s forwards;
+}
+
+@keyframes siBridgePop {
+  to { opacity: 1; transform: scale(1); }
+}
+
+.si-section--creative {
+  position: relative;
+  overflow: clip;
+}
+
+.si-section--creative .si-section__veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  z-index: 0;
+}
+
+.si-t-petals .si-section__veil {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 182, 193, 0.2), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(232, 134, 42, 0.12), transparent 40%);
+}
+
+.si-t-rangoli .si-section__veil {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(212, 168, 67, 0.15), transparent 50%),
+    repeating-conic-gradient(from 0deg, rgba(139, 26, 26, 0.03) 0deg 12deg, transparent 12deg 24deg);
+}
+
+.si-t-hearts .si-section__veil {
+  background: radial-gradient(ellipse at 50% 30%, rgba(255, 214, 229, 0.35), transparent 55%);
+}
+
+.si-t-bells .si-section__veil {
+  background: linear-gradient(180deg, rgba(253, 245, 230, 0.5), transparent 40%);
+}
+
+.si-t-silk .si-section__veil {
+  background: linear-gradient(135deg, rgba(255, 252, 245, 0.8), rgba(245, 235, 213, 0.4));
+}
+
+.si-t-sparkles .si-section__veil {
+  background: radial-gradient(circle at 30% 40%, rgba(255, 230, 160, 0.25), transparent 45%);
+}
+
+.si-section--creative > *:not(.si-section__veil) {
+  position: relative;
+  z-index: 1;
+}
+
+.si-section--creative.si-couple {
+  background: linear-gradient(180deg, #fff9ef 0%, #fdf5e6 50%, #fff5f8 100%);
+}
+
+.si-section--creative.si-countdown {
+  background: linear-gradient(180deg, #fdf5e6, #fff0f3);
+}
+
+.si-section--creative.si-rsvp {
+  background: linear-gradient(180deg, #fff5f8, #fdf5e6);
+}
+
+.si-hero__ampersand {
+  display: inline-block;
+  animation: siHeartPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes siHeartPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 transparent); }
+  50% { transform: scale(1.08); filter: drop-shadow(0 0 12px rgba(212, 168, 67, 0.5)); }
+}
+
+.si-couple__card {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s;
+}
+
+.si-couple__card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(139, 26, 26, 0.12);
+}
+
+.si-couple__wreath {
+  animation: siWreathGlow 4s ease-in-out infinite;
+}
+
+@keyframes siWreathGlow {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(232, 134, 42, 0.3)); }
+  50% { filter: drop-shadow(0 0 14px rgba(212, 168, 67, 0.55)); }
+}
+
+.si-event-card {
+  transition: transform 0.4s ease, box-shadow 0.4s;
+}
+
+.si-event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(92, 64, 51, 0.12);
+}
+
+.si-event-card__accent {
+  animation: siAccentShimmer 3s ease-in-out infinite;
+}
+
+@keyframes siAccentShimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.65; }
+}
+
+.si-countdown__number {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.si-countdown__unit:hover .si-countdown__number {
+  transform: scale(1.06);
+}
+
+.si-gallery__item {
+  transition: transform 0.45s ease, box-shadow 0.45s;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.si-gallery__item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 28px rgba(139, 26, 26, 0.15);
+}
+
+.si-gallery__item:hover .si-gallery__image {
+  transform: scale(1.06);
+}
+
+.si-gallery__image {
+  transition: transform 0.6s ease;
+}
+
+.si-video__wrapper {
+  box-shadow: 0 20px 50px rgba(139, 26, 26, 0.12);
+  border: 2px solid rgba(212, 168, 67, 0.35);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.si-rsvp__submit {
+  transition: transform 0.3s ease, box-shadow 0.3s;
+}
+
+.si-rsvp__submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(139, 26, 26, 0.2);
+}
+
+.si-envelope__cta {
+  transition: transform 0.35s ease, box-shadow 0.35s;
+}
+
+.si-envelope__cta:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 32px rgba(139, 26, 26, 0.25);
+}
+
+.si-heading-love {
+  position: relative;
+  display: inline-block;
+}
+
+.si-heading-love::after {
+  content: '♥';
+  position: absolute;
+  right: -1.25rem;
+  top: 0;
+  font-size: 0.65em;
+  color: var(--si-gold);
+  opacity: 0.7;
+  animation: siHeartPulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .si-love-layer,
+  .si-hero__ampersand,
+  .si-couple__wreath,
+  .si-event-card__accent,
+  .si-bridge__line,
+  .si-bridge__icon {
+    animation: none !important;
+  }
+
+  .south-indian--love .si-page {
+    animation: none;
+  }
+}
