@@ -27,8 +27,8 @@ export type WeddingEvent = {
 export const weddingConfig = {
   intro: {
     skipLabel: 'Skip Intro',
-    sessionKey: 'hari-indu-hindu-v1',
-    ctaEn: 'Open the Sacred Doors',
+    sessionKey: 'hari-indu-traditional-si-v1',
+    ctaEn: 'Open Invitation',
     ctaTa: 'அழைப்பிதழைத் திறக்க தட்டவும்',
     revealEn: 'Wedding Invitation',
     revealTa: 'திருமண அழைப்பிதழ்',
@@ -50,6 +50,22 @@ export const weddingConfig = {
   experience: {
     stageBannerSrc: '/assets/wedding-stage-banner.jpg',
     ambientPetals: false,
+  },
+
+  traditional: {
+    ganeshaya: '|| Sri Ganeshaya Namah ||',
+    envelopeLabel: 'You are invited to the wedding of',
+    openCta: 'Open Invitation',
+    quoteEn:
+      'Two hearts united, one beautiful journey begins. Wishing you a lifetime of togetherness.',
+    togetherEn: 'Together with the blessings of their families',
+    coupleHeading: 'About the Couple',
+    eventsHeading: 'Wedding Events',
+    countdownHeading: 'Counting Down To',
+    countdownSub: 'Our Special Day',
+    galleryHeading: 'Captured Moments',
+    venueHeading: 'When & Where',
+    rsvpHeading: 'Will You Join Us?',
   },
 
   story: {
