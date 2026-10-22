@@ -1,0 +1,293 @@
+.entry-page {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, #faf3dc 0%, var(--cream) 40%, var(--cream-deep) 100%);
+  color: var(--maroon);
+}
+
+.entry-bg-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background-image: radial-gradient(circle at 20% 30%, var(--gold) 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, var(--maroon) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+.entry-temple-row {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 1rem;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.entry-gopuram {
+  width: 72px;
+  color: var(--maroon-dark);
+}
+
+.entry-gopuram.center {
+  width: 96px;
+  opacity: 1;
+}
+
+.entry-gopuram.left,
+.entry-gopuram.right {
+  transform: scale(0.85);
+  margin-top: 1.5rem;
+}
+
+.melam-decor {
+  position: absolute;
+  bottom: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
+  color: var(--maroon);
+  opacity: 0.55;
+  z-index: 2;
+}
+
+.melam-instrument svg {
+  display: block;
+}
+
+.melam-instrument.nadaswaram svg {
+  width: 28px;
+  height: 70px;
+}
+
+.melam-instrument.thavil svg {
+  width: 56px;
+  height: 56px;
+}
+
+.temple-doors {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.door {
+  flex: 1;
+  max-width: 50%;
+  background: linear-gradient(90deg, var(--maroon-dark), var(--maroon));
+  border: 3px solid var(--gold);
+  position: relative;
+  transition: transform 1.8s cubic-bezier(0.65, 0, 0.35, 1);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.35);
+}
+
+.door-left {
+  transform-origin: left center;
+  border-right: 2px solid var(--gold-light);
+}
+
+.door-right {
+  transform-origin: right center;
+  border-left: 2px solid var(--gold-light);
+}
+
+.temple-doors.open .door-left {
+  transform: perspective(800px) rotateY(-88deg) translateX(-8%);
+}
+
+.temple-doors.open .door-right {
+  transform: perspective(800px) rotateY(88deg) translateX(8%);
+}
+
+.door-panel {
+  position: absolute;
+  inset: 12% 15%;
+  border: 2px solid var(--gold-light);
+  border-radius: 4px;
+  opacity: 0.5;
+}
+
+.door-kolam {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  opacity: 0.35;
+}
+
+.door-gap {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.door-ganesha {
+  position: absolute;
+  top: 22%;
+  font-size: 2.5rem;
+  color: var(--gold);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ganesha-label {
+  font-size: 0.75rem;
+  color: var(--maroon);
+  letter-spacing: 0.02em;
+}
+
+.entry-content {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 2rem 1.5rem 6rem;
+  max-width: 32rem;
+}
+
+.entry-sub {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin: 0 0 0.5rem;
+  color: var(--maroon);
+}
+
+.entry-title {
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+  line-height: 1.15;
+  color: var(--maroon-dark);
+}
+
+.entry-title .amp {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.entry-date {
+  font-size: 1rem;
+  margin: 0 0 2rem;
+  opacity: 0.9;
+}
+
+.enter-btn {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.enter-btn-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 2.25rem;
+  background: linear-gradient(145deg, var(--maroon), var(--maroon-dark));
+  color: var(--cream);
+  border: 2px solid var(--gold);
+  border-radius: 999px;
+  font-size: 1rem;
+  box-shadow: 0 8px 24px rgba(74, 18, 25, 0.35);
+  position: relative;
+  z-index: 1;
+}
+
+.enter-en {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  font-style: italic;
+}
+
+.enter-pulse {
+  position: absolute;
+  inset: -4px;
+  border: 2px solid var(--gold);
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.entry-opening {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--maroon);
+  margin-top: 1rem;
+}
+
+.entry-border {
+  position: absolute;
+  inset: 12px;
+  border: 2px solid var(--maroon);
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+.entry-border::before,
+.entry-border::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--maroon);
+  bottom: -2px;
+}
+
+.entry-border::before {
+  left: -2px;
+  border-right: none;
+  border-top: none;
+}
+
+.entry-border::after {
+  right: -2px;
+  border-left: none;
+  border-top: none;
+}
+
+@media (max-width: 600px) {
+  .entry-temple-row {
+    gap: 0.5rem;
+  }
+
+  .entry-gopuram {
+    width: 48px;
+  }
+
+  .entry-gopuram.center {
+    width: 64px;
+  }
+
+  .melam-decor {
+    bottom: 12%;
+    gap: 0.75rem;
+  }
+}
