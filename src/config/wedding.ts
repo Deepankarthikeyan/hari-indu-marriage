@@ -30,6 +30,11 @@ export const weddingConfig = {
   intro: {
     skipLabel: 'Skip',
     sessionKey: 'hari-indu-wedding-intro-seen',
+    ctaEn: 'Open with Love',
+    ctaTa: 'அன்புடன் திறக்கவும்',
+    blessingTa: 'ஶ்ரீ கணேசாய நம:',
+    revealEn: 'Two hearts, one sacred vow',
+    revealTa: 'இரு இதயங்கள் · ஒரு புனித வாக்கு',
   },
 
   hero: {
