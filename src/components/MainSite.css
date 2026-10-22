@@ -1,21 +1,7 @@
-.site-wx {
-  position: relative;
-  min-height: 100dvh;
-}
-
-.wx-sound-slot {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 9000;
-  border: none;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(8px);
+.site-elegant .audio-toggle {
+  font-size: 0.75rem;
+  padding: 0.4rem 0.75rem;
   border-radius: 999px;
-  padding: 0.35rem 0.65rem;
-  cursor: pointer;
-}
-
-.wx-sound-slot .audio-toggle {
-  color: #fff;
+  border: 1px solid var(--e-line);
+  background: rgba(246, 242, 234, 0.9);
 }

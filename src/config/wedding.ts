@@ -27,8 +27,8 @@ export type WeddingEvent = {
 export const weddingConfig = {
   intro: {
     skipLabel: 'Skip Intro',
-    sessionKey: 'hari-indu-marriageweb-v1',
-    ctaEn: 'Tap to Open Invitation',
+    sessionKey: 'hari-indu-elegant-v1',
+    ctaEn: 'Unveil Invitation',
     ctaTa: 'அழைப்பிதழைத் திறக்க தட்டவும்',
     revealEn: 'Wedding Invitation',
     revealTa: 'திருமண அழைப்பிதழ்',
@@ -49,7 +49,7 @@ export const weddingConfig = {
 
   experience: {
     stageBannerSrc: '/assets/wedding-stage-banner.jpg',
-    ambientPetals: true,
+    ambientPetals: false,
   },
 
   story: {

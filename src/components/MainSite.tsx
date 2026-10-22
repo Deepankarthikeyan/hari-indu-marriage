@@ -1,14 +1,16 @@
 import { useEffect } from 'react'
 import { useReducedMotion } from 'framer-motion'
-import AmbientPetals from './experience/AmbientPetals'
-import CurtainHero from './experience/CurtainHero'
-import WxStorySection from './wx/WxStorySection'
-import WxEventsSection from './wx/WxEventsSection'
-import WxFamilySection from './wx/WxFamilySection'
-import WxVenueSection from './wx/WxVenueSection'
-import WxBlessingsSection from './wx/WxBlessingsSection'
 import AudioToggle from './ui/AudioToggle'
 import { useIntroSeen } from '../hooks/useIntroSeen'
+import AmbientMotes from './elegant/AmbientMotes'
+import ChapterNav from './elegant/ChapterNav'
+import ElegantGate from './elegant/ElegantGate'
+import WelcomeSection from './elegant/WelcomeSection'
+import NarrativeSection from './elegant/NarrativeSection'
+import CeremonySection from './elegant/CeremonySection'
+import FamiliesSection from './elegant/FamiliesSection'
+import VenueElegantSection from './elegant/VenueElegantSection'
+import FinaleSection from './elegant/FinaleSection'
 import { weddingConfig } from '../config/wedding'
 import './MainSite.css'
 
@@ -22,30 +24,29 @@ export default function MainSite() {
   }, [reduceMotion, entered, markSeen])
 
   return (
-    <div className="site site-wx">
-      <AmbientPetals />
-      <div className="sound-toggle sound-toggle--wedding wx-sound-slot">
+    <div className="site site-elegant">
+      <AmbientMotes />
+      <div className="e-audio-slot">
         <AudioToggle />
       </div>
+      <ChapterNav visible={entered} />
 
       <main id="wedding-main" className="wedding-main">
-        <CurtainHero siteEntered={entered} onEnterSite={markSeen} />
-        <WxStorySection />
-        <WxEventsSection />
-        <WxFamilySection />
-        <WxVenueSection />
-        <WxBlessingsSection />
+        <ElegantGate siteEntered={entered} onEnterSite={markSeen} />
+        <div className="e-main-content">
+          <WelcomeSection />
+          <NarrativeSection />
+          <CeremonySection />
+          <FamiliesSection />
+          <VenueElegantSection />
+          <FinaleSection />
+        </div>
       </main>
 
-      <footer className="wx-footer">
-        <p className="wx-footer__floral" aria-hidden>
-          🪷 ✦ 🪷 ✦ 🪷
-        </p>
+      <footer className="e-footer">
+        <strong className="tamil">{couple.groom.nameTa} · {couple.bride.nameTa}</strong>
         <p>{footer.thanksEn}</p>
-        <p className="wx-footer__names tamil">
-          {couple.groom.nameEn} <span>&</span> {couple.bride.nameEn}
-        </p>
-        <p className="wx-footer__copy">© {new Date().getFullYear()}</p>
+        <p className="tamil">{footer.thanksTa}</p>
       </footer>
     </div>
   )
