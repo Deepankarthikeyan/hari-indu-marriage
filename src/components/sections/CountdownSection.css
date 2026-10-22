@@ -1,84 +1,51 @@
-.countdown-editorial {
-  padding: var(--section-pad) var(--gutter);
-  background: var(--ivory);
+.countdown-ornate {
   text-align: center;
 }
 
-.cd-wrap {
-  max-width: 40rem;
+.countdown-ring {
+  max-width: 36rem;
   margin: 0 auto;
+  padding: 2rem;
+  border: 2px double var(--gold);
+  background: linear-gradient(165deg, var(--ivory), var(--sandalwood));
 }
 
-.cd-eyebrow {
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--green-soft);
-  margin: 0 0 1rem;
-}
-
-.cd-date {
-  font-size: clamp(2rem, 6vw, 3.25rem);
-  margin: 0;
-}
-
-.cd-date-ta {
-  margin: 0.5rem 0 2rem;
+.countdown-ta {
+  margin: 0 0 0.5rem;
   color: var(--ink-soft);
-  font-weight: 500;
 }
 
-.cd-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 0.35rem 0.5rem;
-}
-
-.cd-unit {
-  min-width: 3.5rem;
-}
-
-.cd-num {
-  display: block;
-  font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 8vw, 4rem);
-  line-height: 1;
-  font-weight: 400;
-}
-
-.cd-label {
-  display: block;
-  font-size: 0.65rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-top: 0.35rem;
-}
-
-.cd-sep {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  opacity: 0.25;
-  padding-bottom: 1.2rem;
-}
-
-@media (max-width: 430px) {
-  .cd-sep {
-    display: none;
-  }
-
-  .cd-row {
-    gap: 1rem 1.25rem;
-  }
-}
-
-.cd-celebrate {
-  display: flex;
-  flex-direction: column;
+.countdown-units {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 400px) {
+  .countdown-units {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.orn-count-num {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: var(--maroon);
+  line-height: 1;
+}
+
+.orn-count-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--peacock);
+}
+
+.countdown-celebrate {
   font-family: var(--font-serif);
   font-size: 1.35rem;
-  color: var(--green);
+  color: var(--maroon);
+  margin-top: 1rem;
 }

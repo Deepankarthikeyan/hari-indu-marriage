@@ -27,35 +27,34 @@ export type WeddingEvent = {
 export const weddingConfig = {
   intro: {
     skipLabel: 'Skip Intro',
-    sessionKey: 'hari-indu-murugan-intro-seen',
-    ctaEn: 'Enter with Blessings',
-    ctaTa: 'ஆசியுடன் நுழையவும்',
+    sessionKey: 'hari-indu-tamil-wedding-v2',
+    ctaEn: 'Tap to Open Invitation',
+    ctaTa: 'அழைப்பிதழைத் திறக்க தட்டவும்',
     revealEn: 'Wedding Invitation',
     revealTa: 'திருமண அழைப்பிதழ்',
   },
 
   murugan: {
-    /** Optional custom devotional image under /public */
     imageSrc: '',
     imageAlt: 'Lord Murugan — divine blessing',
-    blessingTitleEn: 'Divine Blessings',
-    blessingTitleTa: 'முருகன் அருள்',
+    blessingTitleEn: 'Divine Blessings of Lord Murugan',
+    blessingTitleTa: 'முருகப்பெருமான் திவ்ய அருள்',
     blessingEn:
-      'May Lord Murugan, embodiment of wisdom and courage, bless this union with grace, prosperity, and everlasting joy.',
+      'May Lord Murugan bless this sacred union with wisdom, courage, prosperity, and everlasting joy.',
     blessingTa:
-      'ஞானமும் தைரியமும் தரும் முருகப்பெருமானின் அருள், இந்த திருமணத்திற்கு நல்வாழ்வும் மங்களமும் அருளட்டும்.',
+      'ஞானம், தைரியம், செழிப்பு, நிலையான மகிழ்ச்சி — முருகப்பெருமான் இந்த திருமணத்திற்கு அருளட்டும்.',
     closingEn: 'With gratitude for His divine grace upon our families.',
-    closingTa: 'அவன் அருளுக்கு நன்றியுடன், எங்கள் குடும்பங்கள்.',
+    closingTa: 'அவன் அருளுக்கு நன்றியுடன்.',
   },
 
   hero: {
     imageSrc: '',
-    imageAlt: 'Lord Murugan devotional artwork',
+    imageAlt: 'South Indian wedding mandapam',
     blessingEn: 'With the Divine Blessings of Lord Murugan',
     blessingTa: 'முருகப்பெருமானின் திவ்ய அருளுடன்',
     subtitleEn: 'Together with our families, we invite you to celebrate our wedding',
     subtitleTa: 'எங்கள் குடும்பத்தினர் சார்பாக, திருமண விழாவிற்கு அழைக்கிறோம்',
-    ctaEn: 'Explore Our Invitation',
+    ctaEn: 'View Wedding Invitation',
   },
 
   invitation: {
@@ -65,6 +64,21 @@ export const weddingConfig = {
     lineTa: 'எங்கள் புனித திருமணத்தை காணவும் ஆசிர்வதிக்கவும் அழைக்கிறோம்',
     closingEn: 'Your presence and blessings will make our celebration complete.',
     closingTa: 'உங்கள் வருகையும் ஆசியும் எங்கள் மகிழ்ச்சியை நிறைவு செய்யும்.',
+  },
+
+  traditions: {
+    titleEn: 'Tamil Wedding Traditions',
+    titleTa: 'தமிழ் திருமண மரபுகள்',
+    introEn:
+      'From the fragrance of jasmine and marigold to the rhythm of nadaswaram and thavil, our celebration honours timeless Tamil customs.',
+    introTa:
+      'மல்லிகை, சாமந்தி மணம், நாதஸ்வரம், தவில் ஓசை — காலம் கடந்த தமிழ் மரபுகளைக் கொண்டாடுகிறோம்.',
+    items: [
+      { en: 'Kanchipuram silk & traditional veshti', ta: 'காஞ்சிபுரம் பட்டு & வேஷ்டி' },
+      { en: 'Mango-leaf thoranam & banana trees', ta: 'மாவிலை தோரணம் & வாழை மரம்' },
+      { en: 'Kuthuvilakku brass lamps & mandapam', ta: 'குத்து விளக்கு & மணப்பந்தல்' },
+      { en: 'Kolam, coconuts & auspicious fruits', ta: 'கோலம், தேங்காய் & மங்கள பழங்கள்' },
+    ],
   },
 
   couple: {

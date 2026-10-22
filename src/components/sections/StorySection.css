@@ -1,103 +1,91 @@
-.story-section {
-  padding: var(--section-pad) var(--gutter);
-  background: var(--ivory);
-}
-
 .story-head {
-  max-width: 52rem;
-  margin: 0 auto 3rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
 }
 
-.story-head h2 {
-  font-size: clamp(2.25rem, 6vw, 3.5rem);
-}
-
-.story-head p {
-  margin: 0.35rem 0 0;
-  color: var(--green);
-  font-weight: 500;
-}
-
-.story-block {
+.story-album-grid {
   max-width: 56rem;
-  margin: 0 auto 4rem;
+  margin: 0 auto;
   display: grid;
-  gap: 2rem;
-  align-items: center;
+  gap: 3rem;
 }
 
-@media (min-width: 900px) {
-  .story-block {
+@media (min-width: 800px) {
+  .story-album-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 3.5rem;
+    gap: 2rem;
   }
 
-  .story-right .story-visual {
-    order: 2;
+  .album-right {
+    margin-top: 3rem;
   }
 }
 
-.story-photo {
+.album-silk-frame {
+  position: relative;
+  padding: 12px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold) 45%, #8a6d3b);
+  box-shadow: 0 12px 32px rgba(74, 18, 25, 0.1);
+}
+
+.album-role {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--maroon);
+  color: var(--ivory);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font-tamil);
+}
+
+.album-photo {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4;
   object-fit: contain;
   background: var(--ivory);
+  display: block;
 }
 
-.story-photo-empty {
+.album-placeholder {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(145deg, var(--ivory), var(--champagne));
-  border: 1px solid var(--line);
-}
-
-.story-placeholder-label {
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  gap: 0.5rem;
+  font-size: 0.8rem;
   color: var(--ink-soft);
+  border: 1px dashed var(--line);
 }
 
-.story-role {
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--green-soft);
-  margin: 0 0 0.5rem;
+.album-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--maroon);
+  margin: 1rem 0 0.15rem;
 }
 
-.story-name {
-  font-size: 1.35rem;
-  font-weight: 600;
-  color: var(--green);
-  margin: 0;
-}
-
-.story-name-en {
+.album-name-en {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 400;
-  margin: 0.15rem 0 0.75rem;
-}
-
-.story-sub {
-  margin: 0 0 1rem;
-  font-size: 0.9rem;
-  color: var(--ink-soft);
-}
-
-.story-bio {
-  margin: 0 0 1rem;
-  font-size: 1.02rem;
-  line-height: 1.7;
-  color: var(--ink-soft);
-  max-width: 38ch;
-}
-
-.story-parents {
+  font-size: 2rem;
   margin: 0;
-  font-size: 0.88rem;
+}
+
+.album-sub {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.album-story {
+  margin: 0.75rem 0;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.album-parents {
   font-style: italic;
+  font-size: 0.88rem;
   color: var(--ink-soft);
 }

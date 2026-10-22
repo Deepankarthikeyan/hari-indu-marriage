@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import AudioToggle from './ui/AudioToggle'
 import VelMotif from './art/VelMotif'
+import { TempleSeparator } from './wedding/Ornaments'
 import HeroSection from './sections/HeroSection'
 import DivineBlessingsSection from './sections/DivineBlessingsSection'
 import InvitationSection from './sections/InvitationSection'
 import StorySection from './sections/StorySection'
+import TraditionsSection from './sections/TraditionsSection'
 import CountdownSection from './sections/CountdownSection'
 import EventsSection from './sections/EventsSection'
 import VenueSection from './sections/VenueSection'
@@ -16,10 +18,10 @@ import SiteFooter from './sections/SiteFooter'
 import './MainSite.css'
 
 const NAV = [
-  { href: '#divine', label: 'Murugan' },
+  { href: '#divine', label: 'Blessings' },
   { href: '#invitation', label: 'Invitation' },
   { href: '#story', label: 'Couple' },
-  { href: '#countdown', label: 'Countdown' },
+  { href: '#traditions', label: 'Traditions' },
   { href: '#events', label: 'Events' },
   { href: '#venue', label: 'Venue' },
   { href: '#gallery', label: 'Gallery' },
@@ -41,7 +43,7 @@ export default function MainSite() {
       <header className={`site-nav ${scrolled ? 'is-scrolled' : ''}`}>
         <a href="#top" className="site-logo">
           <VelMotif size="sm" />
-          <span className="tamil">முருகன் அருள் திருமணம்</span>
+          <span className="tamil">திருமண விழா</span>
         </a>
         <nav aria-label="Primary">
           {NAV.map((item) => (
@@ -53,9 +55,11 @@ export default function MainSite() {
 
       <main>
         <HeroSection />
+        <TempleSeparator />
         <DivineBlessingsSection />
         <InvitationSection />
         <StorySection />
+        <TraditionsSection />
         <CountdownSection />
         <EventsSection />
         <VenueSection />

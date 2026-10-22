@@ -1,7 +1,8 @@
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { weddingConfig } from '../../config/wedding'
 import Lightbox from '../ui/Lightbox'
+import SectionShell from '../wedding/SectionShell'
 import { reveal } from '../motion'
 import './GallerySection.css'
 
@@ -9,27 +10,24 @@ export default function GallerySection() {
   const images = weddingConfig.gallery.images
   const [index, setIndex] = useState<number | null>(null)
 
-  const open = (i: number) => setIndex(i)
-  const close = useCallback(() => setIndex(null), [])
-
   if (!images.length) return null
 
   const current = index !== null ? images[index] : null
 
   return (
-    <section className="gallery-editorial" id="gallery">
+    <SectionShell id="gallery" variant="gallery" className="gallery-wedding">
       <motion.header variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-        <p className="section-eyebrow tamil">நினைவுகள்</p>
-        <h2>Photo Gallery</h2>
+        <p className="section-title-ta tamil">நினைவுகள்</p>
+        <h2 className="section-title">Wedding Gallery</h2>
       </motion.header>
 
-      <div className="gallery-masonry">
+      <div className="gallery-mosaic">
         {images.map((img, i) => (
           <motion.button
             key={img.src}
             type="button"
-            className={`gallery-item gallery-item-${(i % 3) + 1}`}
-            onClick={() => open(i)}
+            className={`gallery-cell gallery-cell-${(i % 3) + 1}`}
+            onClick={() => setIndex(i)}
             variants={reveal}
             initial="hidden"
             whileInView="visible"
@@ -44,7 +42,7 @@ export default function GallerySection() {
       <Lightbox
         src={current?.src ?? null}
         alt={current?.alt ?? ''}
-        onClose={close}
+        onClose={() => setIndex(null)}
         onPrev={index !== null && index > 0 ? () => setIndex((i) => (i !== null ? i - 1 : null)) : undefined}
         onNext={
           index !== null && index < images.length - 1
@@ -52,6 +50,6 @@ export default function GallerySection() {
             : undefined
         }
       />
-    </section>
+    </SectionShell>
   )
 }

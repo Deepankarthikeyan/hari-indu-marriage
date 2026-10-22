@@ -1,12 +1,16 @@
 :root {
   --ivory: #fff8ec;
+  --cream: #f5ebe0;
+  --sandalwood: #e8dcc8;
   --sandstone: #d9c6a5;
+  --vermillion: #9e2a2f;
   --maroon: #702638;
   --maroon-deep: #4a1828;
   --gold: #c6a15b;
   --gold-light: #e8d9a8;
   --peacock: #174c42;
   --peacock-soft: #2a6b5c;
+  --leaf-green: #3d6b35;
   --ink: #2a2018;
   --ink-soft: #5c5048;
   --line: rgba(112, 38, 56, 0.14);

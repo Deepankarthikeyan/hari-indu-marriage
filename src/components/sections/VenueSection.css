@@ -1,65 +1,54 @@
-.venue-trad {
-  padding: var(--section-pad) var(--gutter);
-  background: var(--ivory);
-}
-
-.venue-trad-grid {
-  max-width: 56rem;
+.venue-scroll {
+  position: relative;
+  max-width: 52rem;
   margin: 0 auto;
-  display: grid;
-  gap: 2.5rem;
-  align-items: center;
+  padding: 2rem 1.5rem;
+  border: 2px solid var(--maroon);
+  background: rgba(255, 248, 236, 0.95);
 }
 
-@media (min-width: 900px) {
-  .venue-trad-grid {
+.venue-layout {
+  display: grid;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .venue-layout {
     grid-template-columns: 1.1fr 1fr;
+    align-items: center;
   }
 }
 
-.venue-trad-visual img,
-.venue-placeholder {
+.venue-img-wrap img,
+.venue-img-placeholder {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4/3;
   object-fit: cover;
   border: 1px solid var(--line);
 }
 
-.venue-placeholder {
+.venue-img-placeholder {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  background: var(--silk);
+  background: var(--sandalwood);
   color: var(--ink-soft);
-  font-size: 0.85rem;
 }
 
-.venue-trad-copy h2 {
-  font-size: 1.25rem;
-  color: var(--leaf-green);
-  margin-bottom: 0.25rem;
-}
-
-.venue-trad-copy h3 {
+.venue-details h3 {
   font-family: var(--font-serif);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: 1.75rem;
   color: var(--maroon);
-  margin-bottom: 0.75rem;
+  margin: 0 0 0.75rem;
 }
 
-.venue-address {
-  margin: 0 0 1.5rem;
+.venue-details p {
   line-height: 1.6;
-  color: var(--ink-soft);
+  margin: 0 0 1.25rem;
 }
 
 .venue-hint {
   font-size: 0.85rem;
   color: var(--ink-soft);
-}
-
-.venue-hint code {
-  font-size: 0.8rem;
 }

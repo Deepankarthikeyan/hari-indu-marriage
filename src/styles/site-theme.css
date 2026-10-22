@@ -1,0 +1,32 @@
+@import '../components/wedding/Ornaments.css';
+@import '../components/wedding/SectionShell.css';
+
+.site-murugan {
+  background: var(--ivory);
+}
+
+.w-section .section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5.5vw, 3.25rem);
+  color: var(--maroon);
+  text-align: center;
+  margin: 0 0 0.5rem;
+}
+
+.w-gallery .section-title,
+.w-peacock .section-title,
+.w-maroon .section-title,
+.w-mandap .section-title {
+  color: var(--ivory);
+}
+
+.w-section .section-title-ta {
+  text-align: center;
+  color: var(--gold);
+  font-weight: 600;
+  margin: 0 0 2rem;
+}
+
+.w-gallery .section-title-ta {
+  color: var(--gold-light);
+}

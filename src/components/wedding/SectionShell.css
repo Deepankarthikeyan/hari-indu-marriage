@@ -1,0 +1,68 @@
+.w-section {
+  position: relative;
+  padding: var(--section-pad) var(--gutter);
+  overflow: hidden;
+}
+
+.w-ivory {
+  background: var(--ivory);
+}
+
+.w-mandap {
+  background: linear-gradient(180deg, #2a1810 0%, var(--maroon-deep) 40%, var(--peacock) 100%);
+  color: var(--ivory);
+}
+
+.w-parchment {
+  background: linear-gradient(165deg, var(--sandalwood) 0%, var(--ivory) 35%, var(--cream) 100%);
+}
+
+.w-silk {
+  background: repeating-linear-gradient(
+      92deg,
+      transparent,
+      transparent 40px,
+      rgba(198, 161, 91, 0.04) 40px,
+      rgba(198, 161, 91, 0.04) 41px
+    ),
+    var(--cream);
+}
+
+.w-timeline {
+  background: var(--ivory);
+  border-top: 4px solid var(--gold);
+  border-bottom: 4px solid var(--gold);
+}
+
+.w-gallery {
+  background: linear-gradient(180deg, var(--maroon-deep), #1a1210);
+  color: var(--ivory);
+}
+
+.w-peacock {
+  background: linear-gradient(165deg, var(--peacock) 0%, #0f332c 100%);
+  color: var(--ivory);
+}
+
+.w-maroon {
+  background: var(--maroon);
+  color: var(--ivory);
+}
+
+.w-frame {
+  position: relative;
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  border: 2px double var(--gold);
+  background: rgba(255, 248, 236, 0.92);
+}
+
+.w-mandap .w-frame,
+.w-gallery .w-frame,
+.w-peacock .w-frame,
+.w-maroon .w-frame {
+  background: rgba(42, 24, 16, 0.55);
+  border-color: rgba(232, 212, 138, 0.5);
+  color: var(--ivory);
+}

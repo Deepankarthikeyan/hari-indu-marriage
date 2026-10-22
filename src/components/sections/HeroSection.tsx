@@ -3,7 +3,9 @@ import { weddingConfig } from '../../config/wedding'
 import { formatCeremonyDateDisplay, formatCeremonyTimeDisplay } from '../../utils/datetime'
 import MuruganVisual from '../art/MuruganVisual'
 import VelMotif from '../art/VelMotif'
+import TraditionalEntrance from '../decor/TraditionalEntrance'
 import { FallingPetals } from '../decor/FallingPetals'
+import SectionShell from '../wedding/SectionShell'
 import { reveal } from '../motion'
 import './HeroSection.css'
 
@@ -14,18 +16,17 @@ export default function HeroSection() {
   const time = formatCeremonyTimeDisplay()
 
   return (
-    <section className="hero-murugan" id="top">
-      <div className="hero-murugan-bg" aria-hidden>
-        {!reduceMotion && <FallingPetals count={12} />}
-      </div>
+    <SectionShell id="top" variant="mandap" className="hero-mandap">
+      <TraditionalEntrance variant="full" />
+      {!reduceMotion && <FallingPetals count={16} />}
 
-      <div className="hero-murugan-grid">
-        <motion.div className="hero-murugan-visual" {...motionProps(reduceMotion, 0.1)}>
-          <VelMotif size="sm" glow className="hero-vel-accent" />
+      <div className="hero-mandap-grid">
+        <motion.div className="hero-mandap-visual" {...motionProps(reduceMotion, 0.1)}>
           <MuruganVisual variant="hero" />
         </motion.div>
 
-        <div className="hero-murugan-copy">
+        <div className="hero-mandap-copy">
+          <VelMotif size="sm" glow className="hero-vel" />
           <motion.p className="hero-bless tamil" {...motionProps(reduceMotion, 0.15)}>
             {hero.blessingTa}
           </motion.p>
@@ -45,20 +46,23 @@ export default function HeroSection() {
           <motion.p className="hero-invite tamil" {...motionProps(reduceMotion, 0.45)}>
             {hero.subtitleTa}
           </motion.p>
+          <motion.p className="hero-invite-en" {...motionProps(reduceMotion, 0.48)}>
+            {hero.subtitleEn}
+          </motion.p>
 
-          <motion.div className="hero-meta" {...motionProps(reduceMotion, 0.5)}>
+          <motion.div className="hero-meta" {...motionProps(reduceMotion, 0.55)}>
             <p>{date.en}</p>
             <p className="tamil">{date.ta}</p>
             <p>{time.en}</p>
             <p className="hero-venue">{ceremony.venueName}</p>
           </motion.div>
 
-          <motion.a href="#invitation" className="btn-primary" {...motionProps(reduceMotion, 0.6)}>
+          <motion.a href="#invitation" className="btn-primary hero-cta" {...motionProps(reduceMotion, 0.65)}>
             {hero.ctaEn}
           </motion.a>
         </div>
       </div>
-    </section>
+    </SectionShell>
   )
 }
 

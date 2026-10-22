@@ -1,34 +1,44 @@
 import { motion } from 'framer-motion'
 import { weddingConfig, type WeddingEvent } from '../../config/wedding'
+import SectionShell from '../wedding/SectionShell'
 import { reveal, stagger } from '../motion'
 import './EventsSection.css'
 
+const ritualIcon: Record<string, string> = {
+  muhurtham: '🪔',
+  nichayathartham: '🪷',
+  reception: '🎊',
+  default: '✦',
+}
+
 function EventItem({ event, index }: { event: WeddingEvent; index: number }) {
+  const icon = ritualIcon[event.id] ?? ritualIcon.default
   const maps = event.mapsUrl?.trim()
 
   return (
     <motion.article
-      className="timeline-item"
+      className="ritual-row"
       variants={reveal}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-40px' }}
-      transition={stagger(index * 0.06)}
+      viewport={{ once: true }}
+      transition={stagger(index * 0.07)}
     >
-      <div className="timeline-marker" aria-hidden>
-        <span className="timeline-dot" />
+      <div className="ritual-marker">
+        <span className="ritual-icon">{icon}</span>
+        <span className="ritual-line" aria-hidden />
       </div>
-      <div className="timeline-body">
-        <time className="timeline-date" dateTime={event.date}>
+      <div className="ritual-body">
+        <time className="ritual-time" dateTime={event.date}>
           {event.date} · {event.timeStart}
           {event.timeEnd ? ` – ${event.timeEnd}` : ''}
         </time>
-        <h3 className="timeline-title tamil">{event.nameTa}</h3>
-        <p className="timeline-title-en">{event.nameEn}</p>
-        <p className="timeline-venue">{event.venueName}</p>
-        <p className="timeline-address">{event.address}</p>
+        <h3 className="tamil ritual-ta">{event.nameTa}</h3>
+        <p className="ritual-en">{event.nameEn}</p>
+        <p className="ritual-venue">{event.venueName}</p>
+        <p className="ritual-addr">{event.address}</p>
         {maps && (
-          <a className="timeline-link" href={maps} target="_blank" rel="noopener noreferrer">
+          <a href={maps} target="_blank" rel="noopener noreferrer" className="ritual-map">
             Get directions
           </a>
         )}
@@ -42,17 +52,16 @@ export default function EventsSection() {
   if (!events.length) return null
 
   return (
-    <section className="events-editorial" id="events">
+    <SectionShell id="events" variant="timeline" className="events-ritual">
       <motion.header variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true }}>
         <p className="section-eyebrow tamil">விழா நிகழ்ச்சிகள்</p>
-        <h2>Wedding Events</h2>
+        <h2 className="section-title">Wedding Celebrations</h2>
       </motion.header>
-
-      <div className="timeline">
-        {events.map((event, i) => (
-          <EventItem key={event.id} event={event} index={i} />
+      <div className="ritual-timeline">
+        {events.map((e, i) => (
+          <EventItem key={e.id} event={e} index={i} />
         ))}
       </div>
-    </section>
+    </SectionShell>
   )
 }

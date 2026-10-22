@@ -5,6 +5,7 @@ import { formatCeremonyDateDisplay } from '../../utils/datetime'
 import MuruganVisual from '../art/MuruganVisual'
 import VelMotif from '../art/VelMotif'
 import { FallingPetals } from '../decor/FallingPetals'
+import TraditionalEntrance from '../decor/TraditionalEntrance'
 import AudioToggle from '../ui/AudioToggle'
 import './MuruganIntro.css'
 
@@ -48,6 +49,7 @@ export default function MuruganIntro({ onComplete }: Props) {
       <div className="mi-gopuram mi-gopuram-left" aria-hidden />
       <div className="mi-gopuram mi-gopuram-right" aria-hidden />
       {!panelsOpen && <FallingPetals count={10} />}
+      {panelsOpen && <TraditionalEntrance variant="compact" className="mi-entrance-decor" />}
 
       <button type="button" className="mi-skip" onClick={finish}>{intro.skipLabel}</button>
       <div className="mi-audio"><AudioToggle /></div>

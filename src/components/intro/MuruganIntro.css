@@ -183,6 +183,11 @@
     center / 50% no-repeat;
 }
 
+.mi-entrance-decor {
+  z-index: 1;
+  opacity: 0.5;
+}
+
 .mi-cta {
   position: absolute;
   bottom: clamp(2rem, 8vh, 3.5rem);
