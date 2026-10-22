@@ -1,0 +1,328 @@
+.temple-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 30%, #3d1218 0%, #1a080a 55%, #0d0405 100%);
+  color: var(--ivory);
+}
+
+.intro-pillars {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(48px, 8vw, 88px);
+  background: linear-gradient(90deg, #4a2820, #6b4030 40%, #3d2218);
+  border: 2px solid rgba(201, 162, 39, 0.35);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.45);
+}
+
+.intro-pillar-left {
+  left: 0;
+  border-right: 3px solid var(--gold-dim);
+}
+
+.intro-pillar-right {
+  right: 0;
+  border-left: 3px solid var(--gold-dim);
+}
+
+.intro-garland-top {
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 56px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--leaf-green) 0 12px,
+    #2d5a28 12px 24px
+  );
+  opacity: 0.55;
+  mask-image: radial-gradient(ellipse 80% 100% at 50% 0%, black 40%, transparent 75%);
+  pointer-events: none;
+}
+
+.intro-lamps {
+  position: absolute;
+  top: 3.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: clamp(6rem, 28vw, 14rem);
+  pointer-events: none;
+}
+
+.vilakku {
+  width: 28px;
+  height: 48px;
+  background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 45%, #8a6420 100%);
+  border-radius: 4px 4px 12px 12px;
+  box-shadow: 0 0 24px rgba(232, 212, 138, 0.45);
+  position: relative;
+}
+
+.vilakku::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff6c8, #f0a030 60%, transparent 70%);
+  animation: lamp-flicker 2.8s ease-in-out infinite;
+}
+
+@keyframes lamp-flicker {
+  0%,
+  100% {
+    opacity: 0.85;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vilakku::after {
+    animation: none;
+  }
+}
+
+.intro-skip {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  background: transparent;
+  border: 1px solid rgba(255, 248, 235, 0.35);
+  color: rgba(255, 248, 235, 0.9);
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.intro-audio-wrap {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+}
+
+.intro-stage {
+  position: relative;
+  width: min(92vw, 520px);
+  height: min(68vh, 520px);
+  margin-top: 2rem;
+  perspective: 1200px;
+}
+
+.intro-glow {
+  position: absolute;
+  inset: 8%;
+  background: radial-gradient(ellipse at center, rgba(255, 220, 140, 0.35), transparent 68%);
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+.intro-glow.bright {
+  opacity: 1.4;
+}
+
+.intro-preview {
+  position: absolute;
+  inset: 12% 14%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  background: linear-gradient(165deg, var(--ivory) 0%, var(--sandalwood) 100%);
+  border: 3px double var(--gold);
+  box-shadow: 0 0 60px rgba(255, 200, 100, 0.25);
+  color: var(--maroon-dark);
+}
+
+.intro-kolam {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 0.75rem;
+  border: 2px solid var(--gold-dim);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, transparent 40%, rgba(201, 162, 39, 0.15) 41%),
+    repeating-conic-gradient(from 0deg, rgba(107, 30, 42, 0.12) 0 10deg, transparent 10deg 20deg);
+}
+
+.intro-preview-ta {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+  color: var(--maroon);
+}
+
+.intro-preview-names {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 4.5vw, 1.85rem);
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+.intro-amp {
+  color: var(--gold);
+  font-style: italic;
+  margin: 0 0.35rem;
+}
+
+.intro-preview-blessing {
+  font-size: 0.88rem;
+  font-style: italic;
+  margin: 0;
+  opacity: 0.88;
+  max-width: 22rem;
+  line-height: 1.45;
+}
+
+.intro-doors {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  pointer-events: none;
+}
+
+.intro-door {
+  flex: 1;
+  transform-style: preserve-3d;
+  transition: transform 2s cubic-bezier(0.65, 0, 0.25, 1);
+}
+
+.intro-door-left {
+  transform-origin: left center;
+}
+
+.intro-door-right {
+  transform-origin: right center;
+}
+
+.intro-doors.is-open .intro-door-left {
+  transform: rotateY(-82deg);
+}
+
+.intro-doors.is-open .intro-door-right {
+  transform: rotateY(82deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-door {
+    transition: none;
+  }
+}
+
+.door-face {
+  position: absolute;
+  inset: 0;
+  border: 3px solid #3d2210;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.5), 4px 0 20px rgba(0, 0, 0, 0.35);
+}
+
+.door-face-left {
+  border-right: 2px solid var(--gold-dim);
+}
+
+.door-face-right {
+  border-left: 2px solid var(--gold-dim);
+}
+
+.door-wood {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+      92deg,
+      rgba(0, 0, 0, 0.06) 0 2px,
+      transparent 2px 14px
+    ),
+    linear-gradient(175deg, #5c3828 0%, #3d2218 35%, #2a150f 100%);
+}
+
+.door-carving {
+  position: absolute;
+  inset: 14% 18%;
+  border: 2px solid rgba(201, 162, 39, 0.45);
+  border-radius: 4px;
+  background: url("data:image/svg+xml,%3Csvg width='80' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 8 L48 28 L32 28 Z M40 28 L52 52 L28 52 Z M40 52 L56 88 L24 88 Z' fill='none' stroke='%23c9a227' stroke-width='1' opacity='0.35'/%3E%3C/svg%3E")
+    center / 60% auto no-repeat;
+  opacity: 0.9;
+}
+
+.door-brass-handle {
+  position: absolute;
+  top: 48%;
+  width: 14px;
+  height: 44px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #8a7038, #e8d48a 45%, #6a5528);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.45);
+}
+
+.door-face-left .door-brass-handle {
+  right: 12%;
+}
+
+.door-face-right .door-brass-handle {
+  left: 12%;
+}
+
+.door-gold-trim {
+  position: absolute;
+  inset: 6%;
+  border: 1px solid rgba(232, 212, 138, 0.25);
+  pointer-events: none;
+}
+
+.intro-cta {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  align-items: center;
+  padding: 0.95rem 2rem;
+  border-radius: 999px;
+  border: 2px solid var(--gold);
+  background: linear-gradient(145deg, rgba(107, 30, 42, 0.95), rgba(74, 18, 25, 0.98));
+  color: var(--ivory);
+  font-size: 0.95rem;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
+  z-index: 8;
+}
+
+.intro-cta-en {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+@media (max-width: 430px) {
+  .intro-stage {
+    height: min(62vh, 460px);
+  }
+
+  .intro-lamps {
+    gap: 5rem;
+  }
+
+  .intro-cta {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.88rem;
+  }
+}

@@ -1,10 +1,14 @@
 :root {
-  --cream: #f8f0d4;
-  --cream-deep: #ebe0b8;
+  --cream: #f5edd8;
+  --sandalwood: #ebe0c8;
+  --ivory: #fffdf7;
   --maroon: #6b1e2a;
   --maroon-dark: #4a1219;
+  --vermillion: #9e2a2f;
   --gold: #c9a227;
   --gold-light: #e8d48a;
+  --gold-dim: #a88420;
+  --leaf-green: #3d6b35;
   --text: #3d1519;
   --font-tamil: 'Noto Sans Tamil', system-ui, sans-serif;
   --font-display: 'Cormorant Garamond', Georgia, serif;
@@ -20,6 +24,20 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 body {
   margin: 0;
   min-height: 100dvh;
@@ -27,13 +45,11 @@ body {
   color: var(--text);
   font-family: var(--font-display);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 #root,
-.app-root {
-  min-height: 100dvh;
-}
-
+.app-root,
 .main-wrap {
   min-height: 100dvh;
 }
@@ -49,4 +65,9 @@ button {
 
 a {
   color: var(--maroon);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

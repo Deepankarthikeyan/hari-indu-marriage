@@ -1,0 +1,57 @@
+.closing-section {
+  padding: 2rem 1.25rem 3rem;
+}
+
+.closing-card {
+  max-width: 32rem;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  border-top: 3px double var(--gold);
+  border-bottom: 3px double var(--gold);
+}
+
+.closing-lamps {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  opacity: 0.85;
+}
+
+.closing-ta {
+  font-weight: 700;
+  color: var(--maroon);
+  margin: 0 0 0.5rem;
+  line-height: 1.5;
+}
+
+.closing-en {
+  font-style: italic;
+  margin: 0 0 1rem;
+  line-height: 1.55;
+}
+
+.closing-signoff,
+.closing-signoff-en {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
+
+.whatsapp-rsvp {
+  display: inline-flex;
+  margin-top: 1.25rem;
+  min-height: 44px;
+  align-items: center;
+  padding: 0.65rem 1.35rem;
+  border-radius: 999px;
+  background: #1a7a42;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.whatsapp-rsvp:hover {
+  filter: brightness(1.05);
+}
