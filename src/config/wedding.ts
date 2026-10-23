@@ -52,6 +52,11 @@ export const weddingConfig = {
     ambientPetals: true,
   },
 
+  /** Replace `couple3dHero` with a wide PNG (bride left, groom right) — 1600×1200+ recommended */
+  assets: {
+    couple3dHero: '/assets/couple/couple-3d-hero.png',
+  },
+
   palace: {
     ganeshaya: '|| Sri Ganeshaya Namah ||',
     taglineEn: 'Let the celebrations begin with colours, music & endless joy!',

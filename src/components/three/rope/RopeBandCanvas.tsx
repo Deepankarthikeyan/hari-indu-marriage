@@ -17,8 +17,8 @@ export default function RopeBandCanvas({ ropeProgress, visible }: Props) {
   const spread = 2.2 * (1 - p * 0.88)
   const groomPos = useMemo(() => new THREE.Vector3(-spread, -0.2, 0), [spread])
   const bridePos = useMemo(() => new THREE.Vector3(spread, -0.2, 0), [spread])
-  const groomHand = useMemo(() => new THREE.Vector3(-spread + 0.55, 0.15, 0.2), [spread])
-  const brideHand = useMemo(() => new THREE.Vector3(spread - 0.55, 0.15, 0.2), [spread])
+  const groomHand = useMemo(() => new THREE.Vector3(-spread + 0.38, 0.08, 0.28), [spread])
+  const brideHand = useMemo(() => new THREE.Vector3(spread - 0.38, 0.08, 0.28), [spread])
 
   if (!visible) return null
 

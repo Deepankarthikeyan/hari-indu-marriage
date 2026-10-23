@@ -10,8 +10,8 @@ import {
 } from '../../utils/datetime'
 import { shareInvitation } from '../../utils/share'
 import Lightbox from '../ui/Lightbox'
-import BridePortrait from './illustrations/BridePortrait'
-import GroomPortrait from './illustrations/GroomPortrait'
+import CouplePortrait3DCanvas from '../three/ui/CouplePortrait3DCanvas'
+import TraditionIcon3DCanvas from '../three/ui/TraditionIcon3DCanvas'
 
 const TRADITION_ICONS = [
   '/assets/south-indian/toran-type-1.png',
@@ -107,7 +107,7 @@ export default function InvitationSections() {
           <h2 className="ci-section__title ci-reveal">{traditional.coupleHeading}</h2>
           <div className="ci-couple-album">
             <article className="ci-album-card ci-reveal">
-              <GroomPortrait />
+              <CouplePortrait3DCanvas half="groom" />
               {couple.groom.photoSrc ? (
                 <img className="ci-album-photo" src={couple.groom.photoSrc} alt={couple.groom.nameEn} />
               ) : null}
@@ -117,7 +117,7 @@ export default function InvitationSections() {
               <p className="ci-album-story">{couple.groom.story}</p>
             </article>
             <article className="ci-album-card ci-reveal">
-              <BridePortrait />
+              <CouplePortrait3DCanvas half="bride" />
               {couple.bride.photoSrc ? (
                 <img className="ci-album-photo" src={couple.bride.photoSrc} alt={couple.bride.nameEn} />
               ) : null}
@@ -138,7 +138,7 @@ export default function InvitationSections() {
           <div className="ci-tradition-grid">
             {traditions.items.map((item, i) => (
               <div key={item.en} className="ci-tradition-card">
-                <img src={TRADITION_ICONS[i % TRADITION_ICONS.length]} alt="" aria-hidden />
+                <TraditionIcon3DCanvas textureSrc={TRADITION_ICONS[i % TRADITION_ICONS.length]} />
                 <p>{item.en}</p>
                 <p className="tamil">{item.ta}</p>
               </div>
@@ -246,8 +246,8 @@ export default function InvitationSections() {
             <img src="/assets/wedding-stage-banner.jpg" alt="Wedding mandapam" loading="lazy" />
           </div>
           <div className="ci-finale__couple ci-reveal">
-            <GroomPortrait />
-            <BridePortrait />
+            <CouplePortrait3DCanvas half="groom" />
+            <CouplePortrait3DCanvas half="bride" />
           </div>
           <h2 className="ci-finale__names script">{couple.groom.nameEn} & {couple.bride.nameEn}</h2>
           <p className="ci-line">{invitation.lineEn}</p>

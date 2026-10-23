@@ -197,6 +197,49 @@
   padding-bottom: min(26vh, 200px);
 }
 
+.couple-portrait-3d {
+  width: min(160px, 42vw);
+  height: min(240px, 52vw);
+  margin: 0 auto 0.5rem;
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(165deg, #faf6ef 0%, #e8d4b8 100%);
+  border: 2px solid rgba(201, 162, 39, 0.55);
+  box-shadow: 0 14px 28px rgba(74, 44, 26, 0.12);
+}
+
+.couple-portrait-3d canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.tradition-icon-3d {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 0.65rem;
+}
+
+.tradition-icon-3d canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.ci-album-card .couple-portrait-3d {
+  width: min(180px, 70%);
+  height: min(260px, 55vw);
+}
+
+.ci-finale__couple .couple-portrait-3d {
+  width: min(130px, 42vw);
+  height: min(200px, 48vw);
+  margin: 0;
+}
+
+.ci-finale__couple {
+  max-width: 320px;
+  gap: 0.75rem;
+}
+
 @media (max-width: 640px) {
   .invite-3d-gate-ui {
     margin-bottom: 12vh;
