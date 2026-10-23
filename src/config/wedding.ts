@@ -27,7 +27,7 @@ export type WeddingEvent = {
 export const weddingConfig = {
   intro: {
     skipLabel: 'Skip Intro',
-    sessionKey: 'hari-indu-mandap-wx-v1',
+    sessionKey: 'hari-indu-curtain-gsap-v1',
     ctaEn: 'Open Invitation',
     ctaTa: 'அழைப்பிதழைத் திறக்க தட்டவும்',
     revealEn: 'Wedding Invitation',
@@ -63,7 +63,7 @@ export const weddingConfig = {
   traditional: {
     ganeshaya: '|| Sri Ganeshaya Namah ||',
     envelopeLabel: 'You are invited to the wedding of',
-    openCta: 'Open Invitation',
+    openCta: 'Open Our Invitation',
     quoteEn:
       'Two hearts united, one beautiful journey begins. Wishing you a lifetime of togetherness.',
     togetherEn: 'Together with the blessings of their families',
