@@ -27,7 +27,7 @@ export type WeddingEvent = {
 export const weddingConfig = {
   intro: {
     skipLabel: 'Skip Intro',
-    sessionKey: 'hari-indu-temple-gate-v1',
+    sessionKey: 'hari-indu-3d-wedding-v1',
     ctaEn: 'Open Invitation',
     ctaTa: 'அழைப்பிதழைத் திறக்க தட்டவும்',
     revealEn: 'Wedding Invitation',

@@ -70,8 +70,6 @@ export default function CurtainHero({ unlocked, onUnlock }: Props) {
     revealInvitationContent()
   }, [unlocked, gateProgress])
 
-  const gateClosed = gateProgress < 0.02
-
   return (
     <section
       id="invitation"
