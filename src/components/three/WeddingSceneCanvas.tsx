@@ -3,7 +3,7 @@ import { Canvas } from '@react-three/fiber'
 import { ContactShadows, Environment, OrbitControls, PerspectiveCamera } from '@react-three/drei'
 import MandapAndDecor3D from './MandapAndDecor3D'
 import Petals3D from './Petals3D'
-import ScrollCamera3D from './ScrollCamera3D'
+import GateCamera3D from './GateCamera3D'
 import TempleGate3D from './TempleGate3D'
 import WeddingHallInterior3D from './hall/WeddingHallInterior3D'
 import TraditionalProps3D from './props/TraditionalProps3D'
@@ -34,8 +34,8 @@ export default function WeddingSceneCanvas({ gateOpenProgress, siteEntered }: Pr
       dpr={[1, 1.75]}
       gl={{ antialias: true, alpha: true }}
     >
-      <color attach="background" args={['#f8f0e4']} />
-      <fog attach="fog" args={['#f5ebe0', 8, 22]} />
+      <color attach="background" args={['#fff7e8']} />
+      <fog attach="fog" args={['#faf0dc', 8, 24]} />
       <PerspectiveCamera makeDefault position={[0, 1.4, 6.2]} fov={42} />
       <ambientLight intensity={0.45} />
       <directionalLight position={[4, 8, 5]} intensity={1.2} castShadow shadow-mapSize={[1024, 1024]} />
@@ -51,7 +51,7 @@ export default function WeddingSceneCanvas({ gateOpenProgress, siteEntered }: Pr
         <ContactShadows position={[0, 0, 0]} opacity={0.35} scale={12} blur={2.5} />
       </Suspense>
 
-      <ScrollCamera3D active={siteEntered} />
+      <GateCamera3D gateOpenProgress={gateOpenProgress} siteEntered={siteEntered} scrollProgress={scrollProgress} />
       {!siteEntered && (
         <OrbitControls
           enablePan={false}

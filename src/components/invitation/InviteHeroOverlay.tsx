@@ -22,25 +22,27 @@ export default function InviteHeroOverlay({ gateOpen, gateOpening, siteEntered, 
     <section id="invitation" className={`invite-3d-hero${showCard ? ' is-revealed' : ''}`}>
       {showGateButton && (
         <div className="invite-3d-gate-ui">
-          <p className="invite-3d-gate-ui__label">3D Temple Entrance</p>
+          <p className="invite-3d-gate-ui__label">South Indian Temple Entrance</p>
           <p className="invite-3d-gate-ui__blessing">{hero.blessingEn}</p>
           <p className="tamil invite-3d-gate-ui__blessing">{hero.blessingTa}</p>
           <button type="button" className="ci-btn ci-btn--gold invite-3d-gate-ui__btn" onClick={onOpenGate}>
-            {palace.doorCtaEn}
+            {palace.enterCtaEn}
           </button>
         </div>
       )}
 
-      {gateOpening && <p className="invite-3d-gate-ui__opening">Opening temple gate…</p>}
+      {gateOpening && <p className="invite-3d-gate-ui__opening">Opening the temple doors…</p>}
 
       {showCard && (
         <div className="invite-3d-card ci-reveal">
-          <p className="ci-hero__blessing">{traditional.togetherEn}</p>
+          <p className="ci-hero__blessing">{hero.blessingEn}</p>
           <p className="ci-hero__label">{intro.revealEn}</p>
           <h1 className="ci-hero__names script">{couple.bride.nameEn} & {couple.groom.nameEn}</h1>
+          <p className="ci-hero__subtitle">{hero.subtitleEn}</p>
           <p className="ci-hero__date">{date.en}</p>
           <p className="ci-hero__time">Muhurtham · {time.en.replace('Between ', '')}</p>
           <p className="ci-hero__venue">{weddingConfig.ceremony.venueName}</p>
+          <p className="tamil ci-hero__blessing">{traditional.togetherEn}</p>
         </div>
       )}
 
@@ -49,7 +51,11 @@ export default function InviteHeroOverlay({ gateOpen, gateOpening, siteEntered, 
         <AudioToggle className="ci-audio" />
       </div>
 
-      {siteEntered && <p className="ci-hero__scroll">Scroll — the 3D scene moves with you ↓</p>}
+      {siteEntered && (
+        <p className="ci-hero__scroll">
+          Scroll — pull the sacred rope as their story unfolds ↓
+        </p>
+      )}
     </section>
   )
 }

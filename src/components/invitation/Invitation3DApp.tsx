@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { useRopeScrollStory } from './hooks/useRopeScrollStory'
 import gsap from 'gsap'
 import { weddingConfig } from '../../config/wedding'
 import { useIntroSeen } from '../../hooks/useIntroSeen'
@@ -10,14 +11,18 @@ import RopeBandCanvas from '../three/rope/RopeBandCanvas'
 
 const NAV = [
   { href: '#invitation', label: 'Invitation' },
+  { href: '#blessings', label: 'Blessings' },
   { href: '#story', label: 'Story' },
-  { href: '#events', label: 'Events' },
   { href: '#couple', label: 'Couple' },
   { href: '#traditions', label: 'Traditions' },
+  { href: '#music', label: 'Melam' },
+  { href: '#thaali', label: 'Thaali' },
+  { href: '#events', label: 'Events' },
   { href: '#family', label: 'Family' },
-  { href: '#venue', label: 'Venue' },
   { href: '#countdown', label: 'Countdown' },
+  { href: '#venue', label: 'Venue' },
   { href: '#gallery', label: 'Gallery' },
+  { href: '#rsvp', label: 'RSVP' },
   { href: '#finale', label: 'Finale' },
 ]
 
@@ -32,6 +37,7 @@ export default function Invitation3DApp() {
   const { couple } = weddingConfig
 
   useInvitationGsap(entered)
+  useRopeScrollStory(entered, setRopeProgress)
 
   const gateOpen = gateProgress >= 0.98
 
@@ -55,7 +61,7 @@ export default function Invitation3DApp() {
     progressRef.current.value = 0
     gsap.to(progressRef.current, {
       value: 1,
-      duration: 2.6,
+      duration: 3.1,
       ease: 'power2.inOut',
       onUpdate: () => setGateProgress(progressRef.current.value),
       onComplete: () => {
@@ -84,21 +90,18 @@ export default function Invitation3DApp() {
   }, [entered])
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 24)
-      if (!entered) return
-      const max = document.documentElement.scrollHeight - window.innerHeight
-      const y = max > 0 ? window.scrollY / max : 0
-      const p = Math.min(1, Math.max(0, (y - 0.04) / 0.88))
-      setRopeProgress(p)
-    }
-    onScroll()
+    const onScroll = () => setScrolled(window.scrollY > 24)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [entered])
+  }, [])
+
+  useEffect(() => {
+    document.body.classList.toggle('wx-rope-united', entered && ropeProgress >= 0.94)
+    return () => document.body.classList.remove('wx-rope-united')
+  }, [entered, ropeProgress])
 
   return (
-    <div className="invite-3d-site">
+    <div className={`invite-3d-site${entered ? ' is-entered' : ''}`}>
       <WeddingSceneCanvas gateOpenProgress={gateProgress} siteEntered={entered} />
 
       <div className="invite-3d-ui">

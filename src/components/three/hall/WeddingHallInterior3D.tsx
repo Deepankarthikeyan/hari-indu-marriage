@@ -25,7 +25,22 @@ export default function WeddingHallInterior3D({ visible }: Props) {
   const op = Math.min(1, (visible - 0.15) * 1.4)
 
   return (
-    <group position={[0, 0.5, -2.2]} scale={1.1}>
+    <group position={[0, 0.5, -2.2]} scale={1.15}>
+      {[-1.8, 1.8].map((x) => (
+        <mesh key={x} position={[x, 1.1, 0.15]} castShadow>
+          <cylinderGeometry args={[0.14, 0.16, 2.4, 12]} />
+          <meshStandardMaterial color="#c6a27e" roughness={0.75} />
+        </mesh>
+      ))}
+      {[-1.5, 1.5].map((x) => (
+        <group key={`lamp-${x}`} position={[x, 0.4, 0.55]}>
+          <mesh>
+            <cylinderGeometry args={[0.05, 0.08, 0.45, 10]} />
+            <meshStandardMaterial color="#c9a24d" metalness={0.75} roughness={0.3} />
+          </mesh>
+          <pointLight position={[0, 0.35, 0]} intensity={0.35 * op} color="#ffddb0" distance={2} />
+        </group>
+      ))}
       <mesh position={[0, 2.2, 0]}>
         <planeGeometry args={[5.5, 1.2]} />
         <meshBasicMaterial map={toran} transparent opacity={op} toneMapped={false} />

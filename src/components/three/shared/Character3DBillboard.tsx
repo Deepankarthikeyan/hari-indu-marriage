@@ -34,9 +34,14 @@ export default function Character3DBillboard({
     if (root.current) root.current.position.y = Math.sin(t * 1.15 + (half === 'bride' ? 0.4 : 0)) * 0.04
     if (body.current) {
       const toward = side === 'left' ? 1 : -1
-      const lean = united ? toward * 0.08 : toward * pull * 0.22
-      body.current.rotation.z = lean
-      body.current.rotation.y = Math.sin(t * 0.6) * 0.04 + toward * 0.06
+      if (united) {
+        body.current.rotation.z = 0
+        body.current.rotation.y = toward * 0.42
+      } else {
+        const lean = toward * pull * 0.28
+        body.current.rotation.z = lean
+        body.current.rotation.y = Math.sin(t * 0.6) * 0.04 + toward * (0.06 + pull * 0.08)
+      }
     }
   })
 

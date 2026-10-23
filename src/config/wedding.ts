@@ -27,7 +27,7 @@ export type WeddingEvent = {
 export const weddingConfig = {
   intro: {
     skipLabel: 'Skip Intro',
-    sessionKey: 'hari-indu-3d-wedding-v1',
+    sessionKey: 'hari-indu-3d-wedding-v2',
     ctaEn: 'Open Invitation',
     ctaTa: 'அழைப்பிதழைத் திறக்க தட்டவும்',
     revealEn: 'Wedding Invitation',
@@ -62,7 +62,7 @@ export const weddingConfig = {
     taglineEn: 'Let the celebrations begin with colours, music & endless joy!',
     closingEn: 'Join us for an evening filled with love, laughter & beautiful memories.',
     doorCtaEn: 'Open Temple Gate',
-    enterCtaEn: 'Enter wedding hall',
+    enterCtaEn: 'Enter the Wedding',
   },
 
   traditional: {
@@ -207,7 +207,9 @@ export const weddingConfig = {
 
   audio: {
     src: '',
-    label: 'Music',
+    label: 'Ambient music',
+    celebrationSrc: '',
+    celebrationLabel: 'Hear the Wedding Celebration',
   },
 
   footer: {
