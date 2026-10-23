@@ -96,11 +96,24 @@ export default function CurtainHero({ unlocked, onUnlock }: Props) {
               {traditional.openCta}
             </button>
           )}
+          {!unlocked && !open && (
+            <p className="ci-hero__hint">Tap the gold button to part the curtains — not the side ropes</p>
+          )}
         </div>
         <div className="ci-hero__portrait ci-hero__portrait--bride">
           <BridePortrait />
         </div>
       </div>
+
+      {!unlocked && (
+        <button
+          type="button"
+          className="ci-hero__cta-float ci-btn ci-btn--gold"
+          onClick={handleOpen}
+        >
+          {traditional.openCta}
+        </button>
+      )}
 
       <div className="ci-hero__tools">
         <button type="button" className="ci-hero__skip" onClick={() => { setOpen(true); onUnlock() }}>

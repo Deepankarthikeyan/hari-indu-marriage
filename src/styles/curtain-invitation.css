@@ -202,15 +202,15 @@ body.ci-locked {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 8;
+  z-index: 4;
 }
 
 .ci-curtain {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 52%;
-  z-index: 9;
+  width: 46%;
+  z-index: 4;
 }
 
 .ci-curtain--left { left: 0; }
@@ -241,9 +241,10 @@ body.ci-locked {
 .ci-curtain__rope {
   position: absolute;
   top: 0;
-  width: 4px;
-  height: 40%;
+  width: 3px;
+  height: 28%;
   background: linear-gradient(180deg, var(--ci-gold-light), var(--ci-gold));
+  opacity: 0.65;
 }
 
 .ci-curtain--left .ci-curtain__rope { right: 12px; }
@@ -293,7 +294,7 @@ body.ci-locked {
 
 .ci-hero__top {
   position: relative;
-  z-index: 5;
+  z-index: 10;
   width: min(160px, 28vw);
   margin-bottom: 0.5rem;
 }
@@ -305,7 +306,7 @@ body.ci-locked {
 
 .ci-hero__stage {
   position: relative;
-  z-index: 6;
+  z-index: 10;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -375,6 +376,37 @@ body.ci-locked {
 
 .ci-hero__cta {
   margin-top: 1rem;
+  position: relative;
+  z-index: 12;
+}
+
+.ci-hero__hint {
+  font-size: 0.72rem;
+  color: var(--ci-brown-soft);
+  margin-top: 0.65rem;
+  max-width: 16rem;
+  margin-inline: auto;
+  line-height: 1.4;
+}
+
+.ci-hero__cta-float {
+  position: fixed;
+  left: 50%;
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: 20;
+  box-shadow: 0 12px 32px rgba(74, 44, 26, 0.25);
+  animation: ciCtaPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes ciCtaPulse {
+  0%, 100% { box-shadow: 0 12px 32px rgba(74, 44, 26, 0.2); }
+  50% { box-shadow: 0 12px 40px rgba(201, 162, 39, 0.45); }
+}
+
+.ci-hero.is-open .ci-hero__cta-float,
+.ci-hero.is-unlocked .ci-hero__cta-float {
+  display: none;
 }
 
 .ci-hero__tools {
