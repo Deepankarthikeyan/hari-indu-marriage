@@ -27,7 +27,7 @@ export type WeddingEvent = {
 export const weddingConfig = {
   intro: {
     skipLabel: 'Skip Intro',
-    sessionKey: 'hari-indu-curtain-gsap-v1',
+    sessionKey: 'hari-indu-temple-gate-v1',
     ctaEn: 'Open Invitation',
     ctaTa: 'அழைப்பிதழைத் திறக்க தட்டவும்',
     revealEn: 'Wedding Invitation',
@@ -56,7 +56,7 @@ export const weddingConfig = {
     ganeshaya: '|| Sri Ganeshaya Namah ||',
     taglineEn: 'Let the celebrations begin with colours, music & endless joy!',
     closingEn: 'Join us for an evening filled with love, laughter & beautiful memories.',
-    doorCtaEn: 'Open temple doors',
+    doorCtaEn: 'Open Temple Gate',
     enterCtaEn: 'Enter wedding hall',
   },
 

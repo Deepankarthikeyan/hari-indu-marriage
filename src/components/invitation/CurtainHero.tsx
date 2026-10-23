@@ -4,7 +4,7 @@ import { weddingConfig } from '../../config/wedding'
 import { formatCeremonyDateDisplay, formatCeremonyTimeDisplay } from '../../utils/datetime'
 import AudioToggle from '../ui/AudioToggle'
 import Chandelier from './decor/Chandelier'
-import FloralCurtains from './decor/FloralCurtains'
+import TempleGateScene from './decor/TempleGateScene'
 import BridePortrait from './illustrations/BridePortrait'
 import GroomPortrait from './illustrations/GroomPortrait'
 
@@ -14,109 +14,130 @@ type Props = {
 }
 
 export default function CurtainHero({ unlocked, onUnlock }: Props) {
-  const { couple, intro, hero, traditional } = weddingConfig
-  const [open, setOpen] = useState(unlocked)
+  const { couple, intro, hero, traditional, palace } = weddingConfig
+  const [gateProgress, setGateProgress] = useState(unlocked ? 1 : 0)
+  const [gateOpening, setGateOpening] = useState(false)
   const rootRef = useRef<HTMLElement>(null)
+  const progressRef = useRef({ value: unlocked ? 1 : 0 })
   const date = formatCeremonyDateDisplay()
   const time = formatCeremonyTimeDisplay()
 
-  const handleOpen = () => {
-    if (open) return
-    setOpen(true)
+  const openTempleGate = () => {
+    if (gateOpening || gateProgress >= 1) return
+    setGateOpening(true)
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduced) {
-      onUnlock()
+      setGateProgress(1)
+      progressRef.current.value = 1
+      setGateOpening(false)
+      window.setTimeout(onUnlock, 200)
       return
     }
+    progressRef.current.value = 0
+    gsap.to(progressRef.current, {
+      value: 1,
+      duration: 2.4,
+      ease: 'power2.inOut',
+      onUpdate: () => setGateProgress(progressRef.current.value),
+      onComplete: () => {
+        setGateOpening(false)
+        revealInvitationContent()
+        window.setTimeout(onUnlock, 600)
+      },
+    })
+  }
+
+  const revealInvitationContent = () => {
     const root = rootRef.current
-    if (!root) {
-      onUnlock()
-      return
-    }
-    const tl = gsap.timeline({ onComplete: onUnlock })
-    tl.to(root.querySelector('.ci-curtain--left'), { xPercent: -105, duration: 1.6, ease: 'power2.inOut' }, 0)
-    tl.to(root.querySelector('.ci-curtain--right'), { xPercent: 105, duration: 1.6, ease: 'power2.inOut' }, 0)
-    tl.to(root.querySelector('.ci-hero__petals'), { opacity: 0.6, duration: 0.8 }, 0.3)
+    if (!root) return
+    gsap.fromTo(
+      root.querySelector('.ci-hero__invitation'),
+      { opacity: 0, y: 28 },
+      { opacity: 1, y: 0, duration: 1, ease: 'power3.out' },
+    )
+    gsap.from(root.querySelector('.ci-chandelier'), { scale: 0.7, opacity: 0, duration: 1, delay: 0.2 })
   }
 
   useLayoutEffect(() => {
-    if (unlocked) setOpen(true)
+    if (unlocked) {
+      setGateProgress(1)
+      progressRef.current.value = 1
+    }
   }, [unlocked])
 
   useLayoutEffect(() => {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduced || unlocked) return
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-      tl.from('.ci-chandelier', { scale: 0.6, opacity: 0, duration: 1.2 })
-      tl.from('.ci-hero__line', { y: 24, opacity: 0, stagger: 0.12, duration: 0.85 }, '-=0.5')
-      tl.from('.ci-hero__portrait', { y: 40, opacity: 0, stagger: 0.15, duration: 1 }, '-=0.4')
-      tl.from('.ci-hero__cta', { scale: 0.9, opacity: 0, duration: 0.7 }, '-=0.2')
-      gsap.to('.ci-hero__petals span', {
-        y: '+=30',
-        rotation: '+=120',
-        duration: 6,
-        repeat: -1,
-        yoyo: true,
-        stagger: { each: 0.4, from: 'random' },
-        ease: 'sine.inOut',
-      })
-    }, rootRef)
-    return () => ctx.revert()
-  }, [unlocked])
+    if (unlocked || gateProgress < 1) return
+    revealInvitationContent()
+  }, [unlocked, gateProgress])
+
+  const gateClosed = gateProgress < 0.02
 
   return (
-    <section id="invitation" ref={rootRef} className={`ci-hero${open ? ' is-open' : ''}${unlocked ? ' is-unlocked' : ''}`}>
+    <section
+      id="invitation"
+      ref={rootRef}
+      className={`ci-hero ci-hero--temple${gateProgress >= 1 ? ' is-gate-open' : ''}${unlocked ? ' is-unlocked' : ''}`}
+    >
       <div className="ci-hero__paper" aria-hidden />
-      <FloralCurtains open={open || unlocked} />
+
+      <div className="ci-hero__gate-layer">
+        <TempleGateScene openProgress={gateProgress}>
+          <div className="ci-hero__invitation ci-hero__invitation--behind-gate">
+            <div className="ci-hero__top">
+              <Chandelier />
+            </div>
+            <div className="ci-hero__stage">
+              <div className="ci-hero__portrait ci-hero__portrait--groom">
+                <GroomPortrait />
+              </div>
+              <div className="ci-hero__card">
+                <p className="ci-hero__line ci-hero__blessing">{traditional.togetherEn}</p>
+                <p className="ci-hero__line ci-hero__label">{intro.revealEn}</p>
+                <h1 className="ci-hero__names script">
+                  {couple.bride.nameEn} & {couple.groom.nameEn}
+                </h1>
+                <p className="ci-hero__line ci-hero__date">{date.en}</p>
+                <p className="ci-hero__line ci-hero__time">Muhurtham · {time.en.replace('Between ', '')}</p>
+                <p className="ci-hero__line ci-hero__venue">{weddingConfig.ceremony.venueName}</p>
+                <p className="ci-hero__line tamil ci-hero__ta">{hero.blessingTa}</p>
+              </div>
+              <div className="ci-hero__portrait ci-hero__portrait--bride">
+                <BridePortrait />
+              </div>
+            </div>
+          </div>
+        </TempleGateScene>
+
+        {!unlocked && gateProgress < 0.02 && !gateOpening && (
+          <div className="tg-open-ui">
+            <p className="tg-open-ui__blessing tamil">{hero.blessingTa}</p>
+            <p className="tg-open-ui__blessing">{hero.blessingEn}</p>
+            <button
+              type="button"
+              className="tg-open-ui__btn ci-btn ci-btn--gold"
+              onClick={openTempleGate}
+              disabled={gateOpening}
+            >
+              {gateOpening ? 'Opening…' : palace.doorCtaEn}
+            </button>
+          </div>
+        )}
+      </div>
+
       <div className="ci-hero__petals" aria-hidden>
         {Array.from({ length: 12 }, (_, i) => <span key={i} />)}
       </div>
 
-      <div className="ci-hero__top">
-        <Chandelier />
-      </div>
-
-      <div className="ci-hero__stage">
-        <div className="ci-hero__portrait ci-hero__portrait--groom">
-          <GroomPortrait />
-        </div>
-        <div className="ci-hero__card">
-          <p className="ci-hero__line ci-hero__blessing">{traditional.togetherEn}</p>
-          <p className="ci-hero__line ci-hero__label">{intro.revealEn}</p>
-          <h1 className="ci-hero__names script">
-            {couple.bride.nameEn} & {couple.groom.nameEn}
-          </h1>
-          <p className="ci-hero__line ci-hero__date">{date.en}</p>
-          <p className="ci-hero__line ci-hero__time">Muhurtham · {time.en.replace('Between ', '')}</p>
-          <p className="ci-hero__line ci-hero__venue">{weddingConfig.ceremony.venueName}</p>
-          <p className="ci-hero__line tamil ci-hero__ta">{hero.blessingTa}</p>
-          {!unlocked && (
-            <button type="button" className="ci-hero__cta ci-btn ci-btn--gold" onClick={handleOpen}>
-              {traditional.openCta}
-            </button>
-          )}
-          {!unlocked && !open && (
-            <p className="ci-hero__hint">Tap the gold button to part the curtains — not the side ropes</p>
-          )}
-        </div>
-        <div className="ci-hero__portrait ci-hero__portrait--bride">
-          <BridePortrait />
-        </div>
-      </div>
-
-      {!unlocked && (
+      <div className="ci-hero__tools">
         <button
           type="button"
-          className="ci-hero__cta-float ci-btn ci-btn--gold"
-          onClick={handleOpen}
+          className="ci-hero__skip"
+          onClick={() => {
+            setGateProgress(1)
+            progressRef.current.value = 1
+            onUnlock()
+          }}
         >
-          {traditional.openCta}
-        </button>
-      )}
-
-      <div className="ci-hero__tools">
-        <button type="button" className="ci-hero__skip" onClick={() => { setOpen(true); onUnlock() }}>
           {intro.skipLabel}
         </button>
         <AudioToggle className="ci-audio" />
