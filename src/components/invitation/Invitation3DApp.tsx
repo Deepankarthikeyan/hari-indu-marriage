@@ -6,6 +6,7 @@ import WeddingSceneCanvas from '../three/WeddingSceneCanvas'
 import InviteHeroOverlay from './InviteHeroOverlay'
 import InvitationSections from './InvitationSections'
 import { useInvitationGsap } from './hooks/useInvitationGsap'
+import RopeBandCanvas from '../three/rope/RopeBandCanvas'
 
 const NAV = [
   { href: '#invitation', label: 'Invitation' },
@@ -26,6 +27,7 @@ export default function Invitation3DApp() {
   const [gateOpening, setGateOpening] = useState(false)
   const [navOpen, setNavOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [ropeProgress, setRopeProgress] = useState(0)
   const progressRef = useRef({ value: entered ? 1 : 0 })
   const { couple } = weddingConfig
 
@@ -36,7 +38,7 @@ export default function Invitation3DApp() {
   const finishUnlock = useCallback(() => {
     markSeen()
     document.body.classList.remove('ci-locked')
-    window.setTimeout(() => document.getElementById('story')?.scrollIntoView({ behavior: 'smooth' }), 500)
+    document.getElementById('invitation')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }, [markSeen])
 
   const openGate = useCallback(() => {
@@ -82,10 +84,18 @@ export default function Invitation3DApp() {
   }, [entered])
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24)
+      if (!entered) return
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      const y = max > 0 ? window.scrollY / max : 0
+      const p = Math.min(1, Math.max(0, (y - 0.04) / 0.88))
+      setRopeProgress(p)
+    }
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [entered])
 
   return (
     <div className="invite-3d-site">
@@ -115,6 +125,8 @@ export default function Invitation3DApp() {
         <main className={`ci-main invite-3d-main${entered ? ' is-visible' : ''}`}>
           <InvitationSections />
         </main>
+
+        <RopeBandCanvas ropeProgress={ropeProgress} visible={entered} />
 
         <button type="button" className="ci-top" aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           ↑

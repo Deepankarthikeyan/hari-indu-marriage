@@ -5,6 +5,8 @@ import MandapAndDecor3D from './MandapAndDecor3D'
 import Petals3D from './Petals3D'
 import ScrollCamera3D from './ScrollCamera3D'
 import TempleGate3D from './TempleGate3D'
+import WeddingHallInterior3D from './hall/WeddingHallInterior3D'
+import TraditionalProps3D from './props/TraditionalProps3D'
 
 type Props = {
   gateOpenProgress: number
@@ -42,6 +44,8 @@ export default function WeddingSceneCanvas({ gateOpenProgress, siteEntered }: Pr
       <Suspense fallback={null}>
         <Environment preset="sunset" />
         <TempleGate3D openProgress={gateOpenProgress} />
+        <WeddingHallInterior3D visible={gateOpenProgress} />
+        <TraditionalProps3D scrollProgress={scrollProgress} />
         <MandapAndDecor3D scrollProgress={scrollProgress} />
         <Petals3D />
         <ContactShadows position={[0, 0, 0]} opacity={0.35} scale={12} blur={2.5} />

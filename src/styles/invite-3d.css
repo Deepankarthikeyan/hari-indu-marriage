@@ -1,6 +1,10 @@
 .invite-3d-site {
   position: relative;
   min-height: 100vh;
+  --si-celebrate-gold: #e8c547;
+  --si-celebrate-green: #5a9e62;
+  --si-celebrate-sand: #e8d4b8;
+  --si-celebrate-red: #c45c5c;
 }
 
 .wedding-scene-canvas {
@@ -121,8 +125,84 @@
   gap: 0.5rem;
 }
 
+.rope-band-canvas {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 25;
+  height: min(28vh, 220px);
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(250, 246, 239, 0.55) 35%,
+    rgba(232, 212, 184, 0.85) 100%
+  );
+}
+
+.rope-band-canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.kettimelam-canvas {
+  width: min(100%, 36rem);
+  height: 11rem;
+  margin: 0 auto 1rem;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid var(--si-celebrate-gold);
+  box-shadow:
+    0 12px 32px rgba(74, 44, 26, 0.25),
+    inset 0 0 0 1px rgba(144, 198, 149, 0.35);
+  background: linear-gradient(165deg, #4a0c18 0%, #702638 40%, #3d6b35 100%);
+}
+
+.ci-section--kettimelam {
+  background: linear-gradient(
+    180deg,
+    var(--si-celebrate-sand),
+    #faf6ef 30%,
+    rgba(144, 198, 149, 0.25)
+  ) !important;
+  color: var(--ci-brown);
+}
+
+.ci-section--kettimelam .ci-section__title {
+  color: var(--ci-maroon);
+}
+
+.ci-countdown--labels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  max-width: 28rem;
+  margin: 0 auto;
+}
+
+.ci-countdown--labels .ci-countdown__lbl {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--si-celebrate-green);
+}
+
+.ci-kettimelam__past {
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.invite-3d-main {
+  padding-bottom: min(26vh, 200px);
+}
+
 @media (max-width: 640px) {
   .invite-3d-gate-ui {
     margin-bottom: 12vh;
+  }
+
+  .rope-band-canvas {
+    height: min(32vh, 180px);
   }
 }

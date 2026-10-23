@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import KettimelamCountdownScene from '../three/countdown/KettimelamCountdownScene'
 import { weddingConfig } from '../../config/wedding'
 import { useCeremonyCountdown } from '../../hooks/useCountdown'
 import { downloadIcsForEvent } from '../../utils/calendar'
@@ -36,6 +37,18 @@ export default function InvitationSections() {
   const cd = useCeremonyCountdown()
   const date = formatCeremonyDateDisplay()
   const [lightbox, setLightbox] = useState<string | null>(null)
+  const [melamBeat, setMelamBeat] = useState(0)
+
+  useEffect(() => {
+    let frame = 0
+    const start = performance.now()
+    const tick = () => {
+      setMelamBeat((performance.now() - start) * 0.01)
+      frame = requestAnimationFrame(tick)
+    }
+    frame = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(frame)
+  }, [])
   const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent([ceremony.venueName, ceremony.address].filter(Boolean).join(', '))}&output=embed`
 
   return (
@@ -173,28 +186,33 @@ export default function InvitationSections() {
         </div>
       </section>
 
-      <section id="countdown" className="ci-section ci-section--countdown">
+      <section id="countdown" className="ci-section ci-section--countdown ci-section--kettimelam">
         <div className="ci-section__inner ci-reveal">
           <h2 className="ci-section__title">{traditional.countdownHeading}</h2>
           <p className="ci-section__subtitle">{traditional.countdownSub}</p>
-          <div className="ci-countdown">
-            {cd.isPast ? (
-              <p className="tamil">இன்று நம் திருமண நாள்!</p>
-            ) : (
-              <>
-                {[
-                  ['Days', cd.days],
-                  ['Hours', cd.hours],
-                  ['Minutes', cd.minutes],
-                  ['Seconds', cd.seconds],
-                ].map(([label, val]) => (
-                  <div key={label} className="ci-countdown__unit" data-value={val}>
-                    <span className="ci-countdown__num">{String(val).padStart(2, '0')}</span>
-                    <span className="ci-countdown__lbl">{label}</span>
-                  </div>
-                ))}
-              </>
-            )}
+          {cd.isPast ? (
+            <p className="tamil ci-kettimelam__past">இன்று நம் திருமண நாள்!</p>
+          ) : (
+            <KettimelamCountdownScene
+              days={String(cd.days).padStart(2, '0')}
+              hours={String(cd.hours).padStart(2, '0')}
+              minutes={String(cd.minutes).padStart(2, '0')}
+              seconds={String(cd.seconds).padStart(2, '0')}
+              beat={melamBeat}
+            />
+          )}
+          <div className="ci-countdown ci-countdown--labels" aria-hidden={!cd.isPast}>
+            {!cd.isPast &&
+              [
+                ['Days', cd.days],
+                ['Hours', cd.hours],
+                ['Minutes', cd.minutes],
+                ['Seconds', cd.seconds],
+              ].map(([label, val]) => (
+                <div key={label} className="ci-countdown__unit" data-value={val}>
+                  <span className="ci-countdown__lbl">{label}</span>
+                </div>
+              ))}
           </div>
           <p className="ci-countdown__date">Muhurtham · {date.en}</p>
           <button
