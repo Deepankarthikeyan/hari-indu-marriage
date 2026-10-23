@@ -1,0 +1,117 @@
+/* Elegant creative wedding — design tokens */
+:root {
+  --e-ink: #16151c;
+  --e-ink-soft: #3d3a45;
+  --e-twilight: #252836;
+  --e-deep: #1a2030;
+  --e-sage: #6b8f7a;
+  --e-sage-muted: #8fa898;
+  --e-pearl: #f6f2ea;
+  --e-cream: #ebe4d6;
+  --e-champagne: #e2d4bc;
+  --e-gold: #c4a574;
+  --e-gold-bright: #dfc18e;
+  --e-bronze: #9a7b55;
+  --e-blush: #c9a0a0;
+  --e-rose-muted: #b88888;
+  --e-line: rgba(196, 165, 116, 0.28);
+  --e-glow: rgba(196, 165, 116, 0.15);
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-script: 'Pinyon Script', cursive;
+  --font-body: 'Outfit', system-ui, sans-serif;
+  --font-tamil: 'Noto Serif Tamil', var(--font-display);
+
+  --section-pad: clamp(4.5rem, 11vw, 7rem);
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --max: min(1120px, 100% - 2 * var(--gutter));
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.elegant-locked {
+  overflow: hidden;
+  height: 100vh;
+}
+
+body.elegant-entered {
+  overflow: auto;
+  height: auto;
+  background: var(--e-pearl);
+}
+
+.site-elegant {
+  color: var(--e-ink);
+  font-family: var(--font-body);
+  background: var(--e-pearl);
+}
+
+.site-elegant .tamil {
+  font-family: var(--font-tamil);
+}
+
+.e-container {
+  width: var(--max);
+  margin-inline: auto;
+}
+
+.e-chapter-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--e-bronze);
+  margin: 0 0 0.75rem;
+}
+
+.e-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.08;
+  margin: 0;
+  color: var(--e-ink);
+}
+
+.e-subtitle {
+  font-size: 1.05rem;
+  color: var(--e-ink-soft);
+  max-width: 36ch;
+  margin: 0.75rem 0 0;
+  line-height: 1.65;
+}
+
+.e-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border: 1px solid var(--e-gold);
+  background: linear-gradient(145deg, rgba(196, 165, 116, 0.12), rgba(196, 165, 116, 0.04));
+  color: var(--e-ink);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), background 0.35s;
+}
+
+.e-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px var(--e-glow);
+  background: linear-gradient(145deg, rgba(196, 165, 116, 0.22), rgba(196, 165, 116, 0.08));
+}
+
+.e-btn--solid {
+  background: linear-gradient(135deg, var(--e-gold-bright), var(--e-gold));
+  border-color: transparent;
+  color: var(--e-ink);
+}
+
+.e-rule {
+  height: 1px;
+  border: none;
+  margin: 2rem 0;
+  background: linear-gradient(90deg, transparent, var(--e-line), transparent);
+}

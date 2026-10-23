@@ -1,0 +1,51 @@
+.countdown-ornate {
+  text-align: center;
+}
+
+.countdown-ring {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 2px double var(--gold);
+  background: linear-gradient(165deg, var(--ivory), var(--sandalwood));
+}
+
+.countdown-ta {
+  margin: 0 0 0.5rem;
+  color: var(--ink-soft);
+}
+
+.countdown-units {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 400px) {
+  .countdown-units {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.orn-count-num {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: var(--maroon);
+  line-height: 1;
+}
+
+.orn-count-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--peacock);
+}
+
+.countdown-celebrate {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--maroon);
+  margin-top: 1rem;
+}

@@ -1,0 +1,32 @@
+.site-hindu-wedding {
+  position: relative;
+  background: var(--ivory);
+}
+
+.site-petals {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.site-nav-temple {
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 248, 236, 0.88);
+  backdrop-filter: blur(10px);
+}
+
+.site-nav-temple.is-scrolled {
+  box-shadow: 0 8px 28px rgba(74, 24, 40, 0.08);
+}
+
+.site-nav-temple .site-logo .tamil {
+  font-weight: 600;
+  color: var(--maroon);
+}
+
+.site-nav-temple nav a {
+  font-family: var(--font-tamil);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}

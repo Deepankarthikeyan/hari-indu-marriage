@@ -1,0 +1,54 @@
+.venue-scroll {
+  position: relative;
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  border: 2px solid var(--maroon);
+  background: rgba(255, 248, 236, 0.95);
+}
+
+.venue-layout {
+  display: grid;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .venue-layout {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+  }
+}
+
+.venue-img-wrap img,
+.venue-img-placeholder {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+.venue-img-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sandalwood);
+  color: var(--ink-soft);
+}
+
+.venue-details h3 {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  color: var(--maroon);
+  margin: 0 0 0.75rem;
+}
+
+.venue-details p {
+  line-height: 1.6;
+  margin: 0 0 1.25rem;
+}
+
+.venue-hint {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}

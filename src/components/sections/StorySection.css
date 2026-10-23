@@ -1,0 +1,91 @@
+.story-head {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.story-album-grid {
+  max-width: 56rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 3rem;
+}
+
+@media (min-width: 800px) {
+  .story-album-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .album-right {
+    margin-top: 3rem;
+  }
+}
+
+.album-silk-frame {
+  position: relative;
+  padding: 12px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold) 45%, #8a6d3b);
+  box-shadow: 0 12px 32px rgba(74, 18, 25, 0.1);
+}
+
+.album-role {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--maroon);
+  color: var(--ivory);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font-tamil);
+}
+
+.album-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  background: var(--ivory);
+  display: block;
+}
+
+.album-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  border: 1px dashed var(--line);
+}
+
+.album-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--maroon);
+  margin: 1rem 0 0.15rem;
+}
+
+.album-name-en {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  margin: 0;
+}
+
+.album-sub {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.album-story {
+  margin: 0.75rem 0;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.album-parents {
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}

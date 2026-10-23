@@ -1,0 +1,153 @@
+.wx-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.wx-section--blessings {
+  background: linear-gradient(180deg, var(--wx-ivory), rgba(57, 118, 74, 0.12));
+  text-align: center;
+}
+
+.wx-section__ornament {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background: radial-gradient(circle at 50% 0%, var(--wx-gold), transparent 55%);
+  pointer-events: none;
+}
+
+.wx-blessing-lead {
+  font-size: 1.05rem;
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.wx-section--music {
+  background: linear-gradient(165deg, rgba(201, 162, 77, 0.15), var(--wx-ivory));
+}
+
+.wx-section--thaali {
+  background: linear-gradient(180deg, var(--wx-ivory), rgba(201, 93, 82, 0.1));
+  text-align: center;
+}
+
+.wx-scene-canvas {
+  width: min(100%, 28rem);
+  height: 11rem;
+  margin: 1rem auto;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid var(--wx-gold);
+  box-shadow: 0 16px 40px rgba(104, 69, 47, 0.15);
+  background: linear-gradient(160deg, #fff7e8, #e8d4b8);
+}
+
+.wx-scene-canvas--thaali {
+  height: 12rem;
+  background: radial-gradient(circle at 50% 30%, rgba(242, 201, 76, 0.35), #fff7e8 70%);
+}
+
+.wx-album-card {
+  border-color: var(--wx-gold);
+  background: linear-gradient(180deg, #fff, var(--wx-ivory));
+}
+
+.wx-tradition-card {
+  background: linear-gradient(145deg, #fffaf0, #f5ebdc);
+  border: 1px solid rgba(201, 162, 77, 0.45);
+  border-radius: 14px;
+  padding: 1rem 0.75rem;
+}
+
+.wx-quote {
+  border-left: 4px solid var(--wx-green);
+  padding-left: 1rem;
+  background: rgba(255, 247, 232, 0.6);
+  border-radius: 0 12px 12px 0;
+}
+
+.wx-section--rsvp {
+  text-align: center;
+  background: linear-gradient(180deg, rgba(57, 118, 74, 0.08), var(--wx-ivory));
+}
+
+.wx-section--finale.wx-rope-united .wx-finale-petals,
+body.wx-rope-united .wx-finale-petals {
+  opacity: 0.45;
+  animation: wx-petal-fall 6s ease-in-out infinite;
+}
+
+@keyframes wx-petal-fall {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(12px); }
+}
+
+.wx-finale-date {
+  color: var(--wx-gold);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.flip-countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.65rem;
+  max-width: 32rem;
+  margin: 0 auto 1.25rem;
+}
+
+.flip-unit {
+  text-align: center;
+}
+
+.flip-digit {
+  position: relative;
+  background: linear-gradient(180deg, #fffaf0, #e8d4b8);
+  border: 2px solid var(--wx-gold);
+  border-radius: 10px;
+  padding: 0.65rem 0.35rem;
+  box-shadow: inset 0 -4px 0 rgba(104, 69, 47, 0.12);
+}
+
+.flip-digit__top {
+  font-size: clamp(1.35rem, 4vw, 1.85rem);
+  font-weight: 700;
+  color: var(--wx-brown);
+  font-variant-numeric: tabular-nums;
+}
+
+.flip-digit.is-flipping .flip-digit__top {
+  animation: wx-flip 0.45s ease;
+}
+
+@keyframes wx-flip {
+  0% { transform: rotateX(0deg); opacity: 1; }
+  50% { transform: rotateX(-70deg); opacity: 0.35; }
+  100% { transform: rotateX(0deg); opacity: 1; }
+}
+
+.flip-unit__label {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--wx-green);
+}
+
+.wx-audio-placeholder {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  margin: 0.75rem 0;
+}
+
+.audio-toggle--celebration {
+  margin: 0.75rem auto;
+}
+
+.ci-hero__subtitle {
+  font-size: 0.92rem;
+  line-height: 1.45;
+  margin: 0.35rem 0;
+  color: var(--ci-brown-soft);
+}

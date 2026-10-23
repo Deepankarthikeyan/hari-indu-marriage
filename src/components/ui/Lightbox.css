@@ -1,0 +1,52 @@
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(28, 26, 24, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.lightbox-image {
+  max-width: min(96vw, 960px);
+  max-height: 88vh;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: none;
+  border-radius: 50%;
+  background: var(--ivory);
+  color: var(--ink);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.75rem;
+  height: 2.75rem;
+  border: none;
+  border-radius: 50%;
+  background: rgba(250, 248, 244, 0.15);
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.lightbox-prev {
+  left: 1rem;
+}
+
+.lightbox-next {
+  right: 1rem;
+}

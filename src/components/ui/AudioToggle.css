@@ -1,0 +1,21 @@
+.audio-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.audio-toggle:hover {
+  border-color: var(--green);
+}
+
+.audio-toggle-icon {
+  font-size: 0.95rem;
+}

@@ -1,0 +1,1026 @@
+/* Curtain wedding invitation — cream paper, red floral curtains, gold ornaments */
+
+:root {
+  --ci-cream: #faf6ef;
+  --ci-paper: #f3ebe0;
+  --ci-brown: #4a2c1a;
+  --ci-brown-soft: #7a5340;
+  --ci-red: #6b1428;
+  --ci-red-deep: #4a0c18;
+  --ci-gold: #c9a227;
+  --ci-gold-light: #e8d4a0;
+  --ci-maroon: #702638;
+}
+
+.ci-site {
+  background: var(--ci-cream);
+  color: var(--ci-brown);
+  font-family: 'Poppins', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+body.ci-locked {
+  overflow: hidden;
+}
+
+.script {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+}
+
+.ci-section__title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+  color: var(--ci-maroon);
+  text-align: center;
+  margin: 0 0 0.35rem;
+}
+
+.ci-section__subtitle {
+  text-align: center;
+  color: var(--ci-brown-soft);
+  margin: 0 0 2rem;
+}
+
+.ci-section {
+  position: relative;
+  padding: clamp(4rem, 10vh, 6rem) clamp(1.25rem, 4vw, 2rem);
+}
+
+.ci-section__inner {
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.ci-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/assets/mandap-invitation-theme.png') center / cover no-repeat;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.ci-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.35rem;
+  border-radius: 999px;
+  border: 2px solid var(--ci-gold);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.ci-btn--gold {
+  background: linear-gradient(180deg, var(--ci-gold-light), var(--ci-gold));
+  color: var(--ci-brown);
+}
+
+.ci-btn--ghost {
+  background: transparent;
+  color: var(--ci-maroon);
+}
+
+.ci-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(74, 44, 26, 0.12);
+}
+
+/* Nav */
+.ci-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.25rem;
+  background: rgba(250, 246, 239, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(201, 162, 39, 0.25);
+  transition: opacity 0.4s, box-shadow 0.3s;
+}
+
+.ci-nav.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ci-nav.is-scrolled {
+  box-shadow: 0 8px 24px rgba(74, 44, 26, 0.08);
+}
+
+.ci-nav__brand {
+  font-size: 1.4rem;
+  color: var(--ci-maroon);
+  text-decoration: none;
+}
+
+.ci-nav__toggle {
+  border: 1px solid var(--ci-maroon);
+  background: transparent;
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  color: var(--ci-maroon);
+  cursor: pointer;
+}
+
+.ci-nav__links {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 1rem;
+  background: var(--ci-cream);
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  border-radius: 12px;
+  padding: 0.5rem;
+  flex-direction: column;
+  gap: 0.25rem;
+  box-shadow: 0 12px 32px rgba(74, 44, 26, 0.12);
+}
+
+.ci-nav__links.is-open {
+  display: flex;
+}
+
+.ci-nav__links a {
+  color: var(--ci-brown);
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  border-radius: 8px;
+}
+
+.ci-nav__links a:hover {
+  background: var(--ci-paper);
+}
+
+@media (min-width: 960px) {
+  .ci-nav__toggle { display: none; }
+  .ci-nav__links {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    padding: 0;
+    max-width: 70%;
+    justify-content: flex-end;
+  }
+}
+
+/* Hero */
+.ci-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4.5rem 1rem 2rem;
+  overflow: hidden;
+}
+
+.ci-hero__paper {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 248, 235, 0.9), transparent 55%),
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(74, 44, 26, 0.02) 3px, rgba(74, 44, 26, 0.02) 4px),
+    var(--ci-cream);
+}
+
+.ci-curtains {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.ci-curtain {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 46%;
+  z-index: 4;
+}
+
+.ci-curtain--left { left: 0; }
+.ci-curtain--right { right: 0; }
+
+.ci-curtain__fabric {
+  width: 100%;
+  height: 100%;
+  background:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.06) 0 2px, transparent 2px 14px),
+    radial-gradient(circle at 30% 20%, #e8862a 0%, transparent 35%),
+    radial-gradient(circle at 70% 40%, #d4a843 0%, transparent 30%),
+    linear-gradient(165deg, #8b1a2a 0%, #5c0f18 45%, #3d0810 100%);
+  box-shadow: inset -8px 0 24px rgba(0, 0, 0, 0.25);
+  border-right: 3px solid var(--ci-gold);
+}
+
+.ci-curtain--right .ci-curtain__fabric {
+  border-right: none;
+  border-left: 3px solid var(--ci-gold);
+  box-shadow: inset 8px 0 24px rgba(0, 0, 0, 0.25);
+}
+
+.ci-curtains.is-open .ci-curtain {
+  pointer-events: none;
+}
+
+.ci-curtain__rope {
+  position: absolute;
+  top: 0;
+  width: 3px;
+  height: 28%;
+  background: linear-gradient(180deg, var(--ci-gold-light), var(--ci-gold));
+  opacity: 0.65;
+}
+
+.ci-curtain--left .ci-curtain__rope { right: 12px; }
+.ci-curtain--right .ci-curtain__rope { left: 12px; }
+
+.ci-curtain__tassel {
+  position: absolute;
+  top: 38%;
+  width: 14px;
+  height: 28px;
+  background: linear-gradient(180deg, var(--ci-gold), #8b6914);
+  border-radius: 0 0 6px 6px;
+}
+
+.ci-curtain--left .ci-curtain__tassel { right: 8px; }
+.ci-curtain--right .ci-curtain__tassel { left: 8px; }
+
+.ci-hero__petals {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ci-hero__petals span {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50% 0 50% 50%;
+  background: linear-gradient(135deg, #ffb6c1, #e8862a);
+  opacity: 0.35;
+  left: calc(var(--i, 0) * 8%);
+}
+
+.ci-hero__petals span:nth-child(1) { left: 10%; top: 20%; }
+.ci-hero__petals span:nth-child(2) { left: 25%; top: 35%; }
+.ci-hero__petals span:nth-child(3) { left: 40%; top: 15%; }
+.ci-hero__petals span:nth-child(4) { left: 55%; top: 28%; }
+.ci-hero__petals span:nth-child(5) { left: 70%; top: 18%; }
+.ci-hero__petals span:nth-child(6) { left: 85%; top: 32%; }
+.ci-hero__petals span:nth-child(7) { left: 15%; top: 55%; }
+.ci-hero__petals span:nth-child(8) { left: 88%; top: 50%; }
+.ci-hero__petals span:nth-child(9) { left: 50%; top: 12%; }
+.ci-hero__petals span:nth-child(10) { left: 33%; top: 45%; }
+.ci-hero__petals span:nth-child(11) { left: 62%; top: 42%; }
+.ci-hero__petals span:nth-child(12) { left: 78%; top: 60%; }
+
+.ci-hero__top {
+  position: relative;
+  z-index: 10;
+  width: min(160px, 28vw);
+  margin-bottom: 0.5rem;
+}
+
+.ci-chandelier {
+  width: 100%;
+  filter: drop-shadow(0 8px 16px rgba(201, 162, 39, 0.35));
+}
+
+.ci-hero__stage {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(0.25rem, 2vw, 1rem);
+  width: min(96vw, 920px);
+  flex: 1;
+}
+
+.ci-hero__portrait {
+  width: clamp(72px, 16vw, 120px);
+  flex-shrink: 0;
+}
+
+.ci-hero__portrait svg {
+  width: 100%;
+  height: auto;
+}
+
+.ci-hero__card {
+  text-align: center;
+  max-width: 28rem;
+  padding: 1rem 0.75rem;
+  background: rgba(255, 252, 245, 0.88);
+  border: 1px solid rgba(201, 162, 39, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 16px 48px rgba(74, 44, 26, 0.1);
+}
+
+.ci-hero__blessing {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--ci-brown-soft);
+}
+
+.ci-hero__label {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  color: var(--ci-brown-soft);
+  margin-top: 0.35rem;
+}
+
+.ci-hero__names {
+  font-size: clamp(2rem, 6.5vw, 3rem);
+  line-height: 1.15;
+  color: var(--ci-brown);
+  margin: 0.5rem 0;
+}
+
+.ci-hero__date,
+.ci-hero__time,
+.ci-hero__venue {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0.2rem 0;
+  color: var(--ci-brown-soft);
+}
+
+.ci-hero__ta {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.ci-hero__cta {
+  margin-top: 1rem;
+  position: relative;
+  z-index: 12;
+}
+
+.ci-hero__hint {
+  font-size: 0.72rem;
+  color: var(--ci-brown-soft);
+  margin-top: 0.65rem;
+  max-width: 16rem;
+  margin-inline: auto;
+  line-height: 1.4;
+}
+
+.ci-hero__cta-float {
+  position: fixed;
+  left: 50%;
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: 20;
+  box-shadow: 0 12px 32px rgba(74, 44, 26, 0.25);
+  animation: ciCtaPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes ciCtaPulse {
+  0%, 100% { box-shadow: 0 12px 32px rgba(74, 44, 26, 0.2); }
+  50% { box-shadow: 0 12px 40px rgba(201, 162, 39, 0.45); }
+}
+
+.ci-hero.is-open .ci-hero__cta-float,
+.ci-hero.is-unlocked .ci-hero__cta-float {
+  display: none;
+}
+
+.ci-hero__tools {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.ci-hero__skip {
+  background: none;
+  border: none;
+  color: var(--ci-brown-soft);
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.ci-hero__scroll {
+  position: relative;
+  z-index: 6;
+  font-size: 0.8rem;
+  color: var(--ci-brown-soft);
+  margin-top: 1rem;
+}
+
+.ci-main {
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+}
+
+.ci-main.is-visible {
+  visibility: visible;
+  height: auto;
+  overflow: visible;
+}
+
+/* Sections */
+.ci-section--story { background: linear-gradient(180deg, var(--ci-cream), var(--ci-paper)); }
+.ci-section--events { background: var(--ci-paper); }
+.ci-section--couple { background: var(--ci-cream); }
+.ci-section--traditions { background: linear-gradient(180deg, var(--ci-paper), #fff8f0); }
+.ci-section--family { background: var(--ci-cream); }
+.ci-section--venue { background: var(--ci-paper); }
+.ci-section--countdown { background: linear-gradient(180deg, var(--ci-maroon), var(--ci-red-deep)); color: #fff8f0; }
+.ci-section--countdown .ci-section__title { color: var(--ci-gold-light); }
+.ci-section--gallery { background: var(--ci-cream); }
+.ci-section--finale { background: linear-gradient(180deg, var(--ci-paper), var(--ci-cream)); text-align: center; }
+
+.ci-story-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .ci-story-grid { grid-template-columns: 1fr 1.1fr; }
+}
+
+.ci-story-frame {
+  border: 3px solid var(--ci-gold);
+  border-radius: 8px;
+  padding: 0.5rem;
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(74, 44, 26, 0.1);
+}
+
+.ci-story-frame img {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.ci-story-sign {
+  font-size: 1.5rem;
+  color: var(--ci-maroon);
+}
+
+.ci-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ci-timeline__grow {
+  position: absolute;
+  left: 1.25rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--ci-gold), var(--ci-maroon));
+}
+
+.ci-event {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  margin-left: 0.5rem;
+}
+
+.ci-event__date {
+  text-align: center;
+  min-width: 4.5rem;
+  padding: 0.5rem;
+  background: #fff;
+  border: 2px solid var(--ci-gold-light);
+  border-radius: 8px;
+}
+
+.ci-event__date strong {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--ci-maroon);
+}
+
+.ci-event__body {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(201, 162, 39, 0.3);
+}
+
+.ci-couple-album {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .ci-couple-album { grid-template-columns: 1fr 1fr; }
+}
+
+.ci-album-card {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: #fff;
+  border: 2px solid var(--ci-gold-light);
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(74, 44, 26, 0.08);
+}
+
+.ci-album-card svg {
+  width: min(120px, 40%);
+  margin: 0 auto 0.5rem;
+}
+
+.ci-album-photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--ci-gold);
+  margin: 0.5rem auto;
+  display: block;
+}
+
+.ci-tradition-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.ci-tradition-card {
+  text-align: center;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(201, 162, 39, 0.35);
+}
+
+.ci-tradition-card img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.ci-family-blessings {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .ci-family-blessings { grid-template-columns: 1fr 1fr; }
+}
+
+.ci-family-blessings blockquote {
+  margin: 0;
+  padding: 1.25rem;
+  background: #fff;
+  border-left: 4px solid var(--ci-gold);
+  border-radius: 0 12px 12px 0;
+  font-style: italic;
+}
+
+.ci-venue-card {
+  background: #fff;
+  border: 2px solid var(--ci-gold-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.ci-venue-map {
+  margin-top: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--ci-gold);
+}
+
+.ci-venue-map iframe {
+  width: 100%;
+  height: 220px;
+  border: 0;
+}
+
+.ci-countdown {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.ci-countdown__unit {
+  min-width: 4.5rem;
+  padding: 0.75rem;
+  border: 2px solid var(--ci-gold-light);
+  border-radius: 12px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.ci-countdown__num {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--ci-gold-light);
+}
+
+.ci-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.ci-gallery__item {
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--ci-gold-light);
+}
+
+.ci-gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--ci-paper);
+  min-height: 140px;
+  display: block;
+}
+
+.ci-finale__mandap img {
+  width: 100%;
+  max-height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid var(--ci-gold);
+}
+
+.ci-finale__couple {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: -2rem auto 1rem;
+  max-width: 280px;
+}
+
+.ci-finale__couple svg {
+  width: 45%;
+}
+
+.ci-finale__names {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  color: var(--ci-maroon);
+}
+
+.ci-finale__petals {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  background-image: radial-gradient(#ffb6c1 2px, transparent 2px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.ci-top {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--ci-gold);
+  background: var(--ci-cream);
+  color: var(--ci-maroon);
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(74, 44, 26, 0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+body:not(.ci-locked) .ci-top {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 640px) {
+  .ci-hero__portrait--groom,
+  .ci-hero__portrait--bride {
+    width: clamp(56px, 14vw, 80px);
+  }
+
+  .ci-curtain {
+    width: 48%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ci-curtain {
+    transition: none !important;
+  }
+}
+
+/* —— Temple gate opening (start screen) —— */
+.ci-hero--temple {
+  padding-top: 3.5rem;
+}
+
+.ci-hero__gate-layer {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  min-height: min(78vh, 620px);
+  margin: 0 auto;
+  z-index: 8;
+}
+
+.tg-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: min(78vh, 620px);
+}
+
+.tg-scene__sky {
+  position: absolute;
+  inset: -10% -20%;
+  background: radial-gradient(ellipse at 50% 0%, #ffe8c8 0%, #f5ebe0 45%, #e8dcc8 100%);
+  z-index: 0;
+}
+
+.tg-scene__gopuram {
+  position: absolute;
+  top: -2%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 108%;
+  max-width: 480px;
+  opacity: 0.5;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.tg-scene__leaf {
+  position: absolute;
+  bottom: 8%;
+  width: 26%;
+  z-index: 2;
+  opacity: 0.8;
+}
+
+.tg-scene__leaf--l { left: -6%; }
+.tg-scene__leaf--r { right: -6%; transform: scaleX(-1); }
+
+.tg-scene__frame {
+  position: relative;
+  margin: 8% auto 0;
+  width: 92%;
+  height: min(68vh, 520px);
+  z-index: 3;
+}
+
+.tg-scene__stone {
+  position: absolute;
+  top: 6%;
+  bottom: 10%;
+  width: 10%;
+  background: linear-gradient(90deg, #c9b896, #e8dcc8, #b8a080);
+  border: 2px solid var(--ci-gold);
+  border-radius: 4px;
+  box-shadow: inset 0 0 20px rgba(74, 44, 26, 0.15);
+}
+
+.tg-scene__stone--l { left: 0; }
+.tg-scene__stone--r { right: 0; }
+
+.tg-scene__toran {
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.tg-scene__sanctum {
+  position: absolute;
+  inset: 12% 10% 14%;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--ci-cream);
+  z-index: 1;
+}
+
+.tg-scene__light {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(255, 220, 160, 0.65), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tg-scene__doors {
+  position: absolute;
+  inset: 10% 4% 12%;
+  z-index: 5;
+  transform-style: preserve-3d;
+}
+
+.tg-door {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  transform-style: preserve-3d;
+  transition: none;
+  will-change: transform;
+}
+
+.tg-door--left { left: 0; }
+.tg-door--right { right: 0; }
+
+.tg-door-face {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.08) 0 3px,
+      transparent 3px 28px
+    ),
+    linear-gradient(160deg, #4a1810 0%, #2a0a08 40%, #1a0505 100%);
+  border: 4px solid var(--ci-gold);
+  box-shadow:
+    inset 0 0 50px rgba(0, 0, 0, 0.5),
+    4px 0 20px rgba(0, 0, 0, 0.35);
+}
+
+.tg-door-face--left {
+  border-radius: 8px 0 0 8px;
+  border-right-width: 2px;
+}
+
+.tg-door-face--right {
+  border-radius: 0 8px 8px 0;
+  border-left-width: 2px;
+  box-shadow:
+    inset 0 0 50px rgba(0, 0, 0, 0.5),
+    -4px 0 20px rgba(0, 0, 0, 0.35);
+}
+
+.tg-door-face__plank {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: rgba(201, 162, 39, 0.35);
+}
+
+.tg-door-face__plank--1 { top: 22%; }
+.tg-door-face__plank--2 { top: 48%; }
+.tg-door-face__plank--3 { top: 74%; }
+
+.tg-door-face__carving {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 42%;
+  padding: 0.35rem;
+  border: 2px solid rgba(201, 162, 39, 0.5);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.tg-door-face__carving img {
+  width: 100%;
+  display: block;
+}
+
+.tg-door-face__stud-row {
+  position: absolute;
+  bottom: 18%;
+  left: 15%;
+  right: 15%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tg-door-face__stud-row span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--ci-gold-light), #8b6914);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.tg-door-face__handle {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 36px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, #8b6914, #f5e6b8, #8b6914);
+  border-radius: 4px;
+}
+
+.tg-door-face--left .tg-door-face__handle { right: 10px; }
+.tg-door-face--right .tg-door-face__handle { left: 10px; }
+
+.tg-scene__threshold {
+  position: absolute;
+  bottom: 6%;
+  left: 6%;
+  right: 6%;
+  height: 14px;
+  background: linear-gradient(180deg, #d4af37, #8b6914);
+  border-radius: 3px;
+  box-shadow: 0 6px 16px rgba(74, 44, 26, 0.35);
+  z-index: 2;
+}
+
+.ci-hero__invitation--behind-gate {
+  position: relative;
+  z-index: 2;
+  padding: 0.5rem 0.25rem 1rem;
+  opacity: 0.15;
+  transform: scale(0.98);
+  transition: opacity 0.6s ease;
+}
+
+.ci-hero.is-gate-open .ci-hero__invitation--behind-gate {
+  opacity: 1;
+  transform: none;
+}
+
+.tg-open-ui {
+  position: absolute;
+  left: 50%;
+  bottom: 12%;
+  transform: translateX(-50%);
+  z-index: 20;
+  text-align: center;
+  width: min(92%, 320px);
+  padding: 1rem;
+  background: rgba(253, 248, 240, 0.92);
+  border: 2px solid var(--ci-gold);
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(74, 44, 26, 0.2);
+}
+
+.tg-open-ui__blessing {
+  font-size: 0.85rem;
+  color: var(--ci-brown-soft);
+  margin: 0 0 0.35rem;
+  line-height: 1.4;
+}
+
+.tg-open-ui__btn {
+  width: 100%;
+  margin-top: 0.65rem;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+}
+
+@media (max-width: 640px) {
+  .ci-hero__gate-layer {
+    min-height: min(85vh, 640px);
+  }
+
+  .tg-open-ui {
+    bottom: 8%;
+  }
+}

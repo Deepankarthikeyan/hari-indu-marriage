@@ -1,0 +1,21 @@
+/* Premium South Indian wedding design tokens — swap assets, keep tokens */
+:root {
+  --wx-yellow: #f2c94c;
+  --wx-green: #39764a;
+  --wx-sandalwood: #c6a27e;
+  --wx-gold: #c9a24d;
+  --wx-red: #c95d52;
+  --wx-ivory: #fff7e8;
+  --wx-brown: #68452f;
+
+  --ci-cream: var(--wx-ivory);
+  --ci-paper: #faf0dc;
+  --ci-brown: var(--wx-brown);
+  --ci-brown-soft: #8a6a52;
+  --ci-red: var(--wx-red);
+  --ci-red-deep: #5c3028;
+  --ci-gold: var(--wx-gold);
+  --ci-gold-light: var(--wx-yellow);
+  --ci-maroon: #7a3d38;
+  --ci-leaf: var(--wx-green);
+}

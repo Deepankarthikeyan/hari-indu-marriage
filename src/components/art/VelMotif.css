@@ -1,0 +1,36 @@
+.vel-motif {
+  color: var(--gold);
+  display: block;
+}
+
+.vel-sm {
+  width: 20px;
+  height: 50px;
+}
+
+.vel-md {
+  width: 28px;
+  height: 70px;
+}
+
+.vel-lg {
+  width: 40px;
+  height: 100px;
+}
+
+.vel-glow {
+  filter: drop-shadow(0 0 12px rgba(198, 161, 91, 0.55));
+  animation: vel-pulse 3s ease-in-out infinite;
+}
+
+@keyframes vel-pulse {
+  50% {
+    filter: drop-shadow(0 0 20px rgba(198, 161, 91, 0.75));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vel-glow {
+    animation: none;
+  }
+}
