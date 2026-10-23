@@ -1,9 +1,9 @@
-import WeddingExperience from './experience/WeddingExperience'
+import MarriageWebSite from './components/palace/MarriageWebSite'
 
 export default function App() {
   return (
     <div className="app-root">
-      <WeddingExperience />
+      <MarriageWebSite />
     </div>
   )
 }
