@@ -9,6 +9,7 @@ import MuruganVisual from '../components/art/MuruganVisual'
 import Lightbox from '../components/ui/Lightbox'
 import BrideIllustration from './characters/BrideIllustration'
 import GroomIllustration from './characters/GroomIllustration'
+import LovePetalsLayer from './scenes/LovePetalsLayer'
 import { reveal } from '../components/motion'
 
 type Props = {
@@ -256,7 +257,7 @@ function FinaleBlock({
 }) {
   return (
     <div className="ws-finale">
-      <div className="ws-finale__petals" aria-hidden />
+      <LovePetalsLayer active />
       <div className="ws-finale__mandapam">
         <img src="/assets/wedding-stage-banner.jpg" alt="Decorated wedding mandapam" loading="lazy" />
       </div>

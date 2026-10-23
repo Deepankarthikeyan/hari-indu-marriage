@@ -5,6 +5,9 @@ import RopeBetween from './characters/RopeBetween'
 import { useStoryScroll } from './hooks/useStoryScroll'
 import StoryChapterPanels from './StoryChapterPanels'
 import StoryScrollSections from './StoryScrollSections'
+import GraspHandsLove from './scenes/GraspHandsLove'
+import LovePetalsLayer from './scenes/LovePetalsLayer'
+import WeddingHallInterior from './scenes/WeddingHallInterior'
 
 type Props = { introComplete: boolean }
 
@@ -22,12 +25,8 @@ export default function RopeScrollAct({ introComplete }: Props) {
     <>
       <div ref={trackRef} className="ws-pin-track" aria-label="Wedding story scroll journey">
         <div ref={stageRef} className="ws-rope-stage">
-          <div className="ws-stage-bg" aria-hidden>
-            <img className="ws-stage-bg__gopuram" src="/assets/south-indian/gopuram-silhouette.png" alt="" />
-            <img className="ws-stage-bg__banana ws-stage-bg__banana--l" src="/assets/south-indian/banana-leaf-left.webp" alt="" />
-            <img className="ws-stage-bg__banana ws-stage-bg__banana--r" src="/assets/south-indian/banana-leaf-right.webp" alt="" />
-            <img className="ws-stage-bg__toran" src="/assets/south-indian/garland-header.png" alt="" />
-          </div>
+          <WeddingHallInterior className="ws-rope-stage__hall" reveal={0.35 + charProgress * 0.65} />
+          <LovePetalsLayer active />
 
           <div className="ws-char-layer">
             <div className="ws-char-wrap ws-char-wrap--groom" style={{ left: `${groomX}%` }}>
@@ -37,6 +36,7 @@ export default function RopeScrollAct({ introComplete }: Props) {
               <BrideIllustration pull={charProgress} united={united} />
             </div>
             <RopeBetween progress={charProgress} united={united} className="ws-rope-between" />
+            <GraspHandsLove active={united} intensity={charProgress} />
           </div>
 
           <div className="ws-stage-center">

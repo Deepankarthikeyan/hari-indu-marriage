@@ -106,7 +106,7 @@ export default function StoryChapterPanels({ chapter, progress }: Props) {
             const show = local > i * 0.18
             return (
               <li key={item.en} className={show ? 'is-visible' : ''} style={{ transitionDelay: `${i * 0.08}s` }}>
-                <span className="ws-tradition-list__icon" aria-hidden>✦</span>
+                <span className="ws-tradition-list__icon wh-kolam-dot" aria-hidden />
                 <span>{item.en}</span>
                 <span className="tamil ws-tradition-list__ta">{item.ta}</span>
               </li>

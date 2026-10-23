@@ -1,0 +1,473 @@
+/* Temple doors + wedding hall interior */
+
+.temple-gate {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  perspective: 1200px;
+  z-index: 0;
+}
+
+.temple-gate__gopuram {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92%, 520px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.temple-gate__gopuram img {
+  width: 100%;
+  display: block;
+}
+
+.temple-gate__arch {
+  position: relative;
+  width: min(94vw, 420px);
+  height: min(72vh, 520px);
+  margin-bottom: 4vh;
+}
+
+.temple-gate__hall {
+  position: absolute;
+  inset: 12% 8% 14%;
+  border-radius: 8px 8px 4px 4px;
+  overflow: hidden;
+  box-shadow: inset 0 0 80px rgba(255, 200, 120, 0.25);
+}
+
+.temple-gate__doors {
+  position: absolute;
+  inset: 10% 0 12%;
+  display: flex;
+  justify-content: center;
+  transform-style: preserve-3d;
+  z-index: 3;
+}
+
+.temple-gate__door {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  transform-style: preserve-3d;
+}
+
+.temple-gate__door--left {
+  left: 0;
+}
+
+.temple-gate__door--right {
+  right: 0;
+}
+
+.temple-gate__panel {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #5c2018 0%, #3d1210 40%, #2a0c0a 100%);
+  border: 3px solid #c9a227;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.45), 4px 0 24px rgba(0, 0, 0, 0.35);
+  position: relative;
+  backface-visibility: hidden;
+}
+
+.temple-gate__panel--left {
+  border-radius: 6px 0 0 6px;
+  border-right-width: 2px;
+}
+
+.temple-gate__panel--right {
+  border-radius: 0 6px 6px 0;
+  border-left-width: 2px;
+}
+
+.temple-gate__carving--top {
+  height: 18%;
+  margin: 8%;
+  border: 2px solid rgba(212, 168, 67, 0.45);
+  border-radius: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(212, 168, 67, 0.15) 0 8px,
+    transparent 8px 16px
+  );
+}
+
+.temple-gate__carving--mid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45%;
+  margin: 0 12%;
+}
+
+.temple-gate__deity-silhouette {
+  width: 56%;
+  max-height: 100%;
+}
+
+.temple-gate__carving--border {
+  position: absolute;
+  bottom: 12%;
+  left: 10%;
+  right: 10%;
+  height: 22%;
+  border-top: 2px solid rgba(212, 168, 67, 0.35);
+  background: radial-gradient(circle at 50% 0%, rgba(212, 168, 67, 0.12), transparent 70%);
+}
+
+.temple-gate__handle {
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 28px;
+  background: linear-gradient(90deg, #8b6914, #f5e6b8, #8b6914);
+  border-radius: 4px;
+  transform: translateY(-50%);
+}
+
+.temple-gate__panel--left .temple-gate__handle {
+  right: 12px;
+}
+
+.temple-gate__panel--right .temple-gate__handle {
+  left: 12px;
+}
+
+.temple-gate__threshold {
+  position: absolute;
+  bottom: 8%;
+  left: 5%;
+  right: 5%;
+  height: 12px;
+  background: linear-gradient(180deg, #c9a227, #8b6914);
+  border-radius: 2px;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Wedding hall interior */
+.wh-hall {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #2a1830 0%, #4a1828 25%, #6b3030 55%, #f5e6d0 100%);
+  overflow: hidden;
+  opacity: calc(0.35 + var(--wh-reveal, 1) * 0.65);
+  transition: opacity 0.6s ease;
+}
+
+.wh-hall__warmth {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 35%, rgba(255, 220, 160, 0.45), transparent 55%);
+  opacity: var(--wh-reveal, 1);
+}
+
+.wh-hall__mandala {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(50%, 200px);
+  opacity: 0.2;
+}
+
+.wh-hall__toran {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 96%;
+  max-width: 560px;
+  opacity: 0.9;
+}
+
+.wh-hall__mandapam {
+  position: absolute;
+  left: 50%;
+  bottom: 18%;
+  transform: translateX(-50%);
+  width: min(88%, 480px);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 3px solid rgba(201, 162, 39, 0.65);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.wh-hall__mandapam img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  max-height: 38vh;
+}
+
+.wh-hall__mandapam-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(255, 200, 120, 0.25));
+  pointer-events: none;
+}
+
+.wh-hall__prop {
+  position: absolute;
+  width: clamp(36px, 8vw, 56px);
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.25));
+}
+
+.wh-hall__prop--l1 {
+  bottom: 28%;
+  left: 8%;
+}
+
+.wh-hall__prop--l2 {
+  bottom: 30%;
+  right: 10%;
+}
+
+.wh-hall__float {
+  animation: whPropFloat 4.5s ease-in-out infinite;
+}
+
+.wh-hall__float--delay {
+  animation-delay: 0.6s;
+  animation-duration: 5.2s;
+}
+
+@keyframes whPropFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.wh-hall__elephant {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(70%, 280px);
+  opacity: 0.35;
+}
+
+.wh-hall__leaf {
+  position: absolute;
+  bottom: 0;
+  width: clamp(70px, 16vw, 120px);
+  opacity: 0.7;
+}
+
+.wh-hall__leaf--l {
+  left: 0;
+}
+
+.wh-hall__leaf--r {
+  right: 0;
+}
+
+.wh-hall__floor-kolam {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 22%;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(212, 168, 67, 0.2) 2px, transparent 3px),
+    radial-gradient(circle at 80% 70%, rgba(212, 168, 67, 0.15) 2px, transparent 3px),
+    repeating-conic-gradient(from 0deg at 50% 100%, rgba(255, 248, 236, 0.08) 0deg 15deg, transparent 15deg 30deg);
+  opacity: calc(var(--wh-reveal, 1) * 0.85);
+}
+
+.wh-hall__petal-layer {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 182, 193, 0.35) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.15;
+  animation: whHallShimmer 8s ease-in-out infinite;
+}
+
+@keyframes whHallShimmer {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.22; }
+}
+
+/* Love petals (no emoji) */
+.wh-petals {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.wh-petals__one {
+  position: absolute;
+  top: -10px;
+  border-radius: 50% 0 50% 50%;
+  background: linear-gradient(135deg, #ffd6e8, #e8862a);
+  opacity: 0;
+  animation: whPetalFall linear infinite;
+}
+
+@keyframes whPetalFall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.4; }
+  100% { transform: translateY(105vh) rotate(480deg); opacity: 0; }
+}
+
+/* Grasp hands */
+.wh-grasp {
+  position: absolute;
+  left: 50%;
+  top: 36%;
+  transform: translate(-50%, -50%);
+  width: min(140px, 28vw);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.wh-grasp__glow {
+  position: absolute;
+  inset: -30%;
+  background: radial-gradient(circle, rgba(255, 200, 140, 0.55), transparent 65%);
+  border-radius: 50%;
+}
+
+.wh-grasp__svg {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.wh-grasp__petals {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.wh-grasp__petal {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50% 0 50% 50%;
+  background: #ffb6c1;
+  left: calc(50% + (var(--i) - 3) * 12px);
+  top: 20%;
+  animation: whGraspPetal 2.5s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.15s);
+}
+
+@keyframes whGraspPetal {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+  50% { transform: translateY(-14px) scale(1.2); opacity: 1; }
+}
+
+.wh-kolam-dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--ws-gold), var(--ws-maroon));
+  box-shadow: 0 0 0 2px rgba(212, 168, 67, 0.35);
+}
+
+/* Opening temple mode */
+.ws-opening--temple {
+  background: #1a1020;
+}
+
+.ws-opening--temple .ws-opening__overlay {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 1.5rem;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.ws-opening--temple .ws-opening__overlay--blessing {
+  position: absolute;
+  left: 50%;
+  top: 18%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+.ws-opening--temple .ws-opening__overlay--hall {
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+.ws-opening__vel-top {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  opacity: 0.85;
+}
+
+.ws-opening__murugan {
+  max-width: 120px;
+  margin: 0 auto 0.75rem;
+}
+
+.ws-opening__hall-avatars {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.5rem;
+  max-width: 280px;
+  margin: 0 auto 0.75rem;
+}
+
+.ws-opening__hall-avatars svg {
+  width: 38%;
+  height: auto;
+}
+
+.ws-opening__hall-line {
+  color: var(--ws-gold-light);
+  font-family: var(--font-serif);
+  margin-bottom: 0.75rem;
+}
+
+.ws-rope-stage__hall {
+  z-index: 0;
+}
+
+.ws-rope-stage {
+  background: transparent !important;
+}
+
+.ws-char-layer .wh-grasp {
+  top: 32%;
+}
+
+@media (max-width: 640px) {
+  .temple-gate__arch {
+    height: min(68vh, 480px);
+  }
+
+  .wh-grasp {
+    width: min(100px, 24vw);
+    top: 34%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wh-hall__petal-layer,
+  .wh-petals__one,
+  .wh-grasp__petal {
+    animation: none !important;
+  }
+}
